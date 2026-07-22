@@ -1,0 +1,189 @@
+{
+  "released_pool": {
+    "full_penalized": {
+      "m0.6": {
+        "policy_pool": 354.8,
+        "per_seed_mean": 354.8,
+        "per_seed_std": 21.85,
+        "random": 341.27,
+        "edd": 329.5,
+        "mor_best_rule": 325.76
+      },
+      "m0.8": {
+        "policy_pool": 350.3,
+        "per_seed_mean": 350.3,
+        "per_seed_std": 23.97,
+        "random": 327.21,
+        "edd": 320.18,
+        "mor_best_rule": 318.5
+      }
+    },
+    "gatep": {
+      "pooled_policy": 326.67,
+      "pooled_best_rule_edd": 319.15,
+      "seeds_beating": 1,
+      "verdict": "FAIL (as registered)"
+    }
+  },
+  "probe": {
+    "updates": 3600,
+    "seeds": [
+      901,
+      902,
+      903
+    ],
+    "curves": {
+      "seed901": {
+        "updates": 3600,
+        "best_primary": 427.49,
+        "best_primary_update": 1480,
+        "final_primary": 488.49,
+        "final_minus_best": 60.99,
+        "improving_at_end": false,
+        "best_full": 498.09,
+        "best_full_update": 3500,
+        "final_full": 571.67,
+        "median_s_per_update": 1.599
+      },
+      "seed902": {
+        "updates": 3600,
+        "best_primary": 417.39,
+        "best_primary_update": 1400,
+        "final_primary": 439.76,
+        "final_minus_best": 22.37,
+        "improving_at_end": false,
+        "best_full": 425.99,
+        "best_full_update": 1640,
+        "final_full": 449.55,
+        "median_s_per_update": 1.492
+      },
+      "seed903": {
+        "updates": 3600,
+        "best_primary": 424.57,
+        "best_primary_update": 1560,
+        "final_primary": 446.51,
+        "final_minus_best": 21.95,
+        "improving_at_end": false,
+        "best_full": 431.53,
+        "best_full_update": 1120,
+        "final_full": 534.21,
+        "median_s_per_update": 1.525
+      }
+    },
+    "best": {
+      "selection": "dev_primary (as released)",
+      "full_penalized": {
+        "m0.6": {
+          "policy_pool": 367.1,
+          "per_seed_mean": 367.1,
+          "per_seed_std": 15.39,
+          "per_seed": {
+            "probe901_best": 385.96,
+            "probe902_best": 367.08,
+            "probe903_best": 348.25
+          },
+          "infeasible": 0,
+          "n_seeds_beating_random": 0,
+          "n_seeds_beating_mor_bestrule": 0
+        },
+        "m0.8": {
+          "policy_pool": 362.34,
+          "per_seed_mean": 362.34,
+          "per_seed_std": 15.52,
+          "per_seed": {
+            "probe901_best": 382.09,
+            "probe902_best": 360.76,
+            "probe903_best": 344.16
+          },
+          "infeasible": 0,
+          "n_seeds_beating_random": 0,
+          "n_seeds_beating_mor_bestrule": 0
+        }
+      },
+      "gatep": {
+        "pooled": {
+          "policy_pool": 328.99,
+          "best_rule": "edd",
+          "best_rule_mean": 319.15,
+          "seeds_beating_best_rule": 0,
+          "n_seeds": 3,
+          "pass": false
+        },
+        "m08": {
+          "policy_pool": 327.56,
+          "best_rule": "edd",
+          "best_rule_mean": 316.98,
+          "seeds_beating_best_rule": 0,
+          "n_seeds": 3,
+          "pass": false
+        },
+        "m06": {
+          "policy_pool": 330.42,
+          "best_rule": "edd",
+          "best_rule_mean": 321.32,
+          "seeds_beating_best_rule": 0,
+          "n_seeds": 3,
+          "pass": false
+        }
+      }
+    },
+    "best_full": {
+      "selection": "dev_full (selection-mismatch test)",
+      "full_penalized": {
+        "m0.6": {
+          "policy_pool": 347.44,
+          "per_seed_mean": 347.44,
+          "per_seed_std": 28.6,
+          "per_seed": {
+            "probe901_best_full": 387.65,
+            "probe902_best_full": 323.52,
+            "probe903_best_full": 331.16
+          },
+          "infeasible": 0,
+          "n_seeds_beating_random": 2,
+          "n_seeds_beating_mor_bestrule": 1
+        },
+        "m0.8": {
+          "policy_pool": 341.12,
+          "per_seed_mean": 341.12,
+          "per_seed_std": 27.68,
+          "per_seed": {
+            "probe901_best_full": 380.09,
+            "probe902_best_full": 318.46,
+            "probe903_best_full": 324.8
+          },
+          "infeasible": 0,
+          "n_seeds_beating_random": 2,
+          "n_seeds_beating_mor_bestrule": 1
+        }
+      },
+      "gatep": {
+        "pooled": {
+          "policy_pool": 324.73,
+          "best_rule": "edd",
+          "best_rule_mean": 319.15,
+          "seeds_beating_best_rule": 1,
+          "n_seeds": 3,
+          "pass": false
+        },
+        "m08": {
+          "policy_pool": 322.65,
+          "best_rule": "edd",
+          "best_rule_mean": 316.98,
+          "seeds_beating_best_rule": 1,
+          "n_seeds": 3,
+          "pass": false
+        },
+        "m06": {
+          "policy_pool": 326.8,
+          "best_rule": "edd",
+          "best_rule_mean": 321.32,
+          "seeds_beating_best_rule": 1,
+          "n_seeds": 3,
+          "pass": false
+        }
+      }
+    }
+  },
+  "headline_verdict": "3x PPO budget does NOT change the penalized-FULL failure or the pooled Gate P verdict. dev_primary best.pt at 3600 updates is no better than the released 1200-update pool (FULL m0.8 362.3 vs 350.3; Gate P 329.0 vs 326.7; 0/3 seeds beat the best rule). Post-hoc dev_full reselection helps (FULL m0.8 341.1<350.3; Gate P 324.7<326.7) and one of three seeds (902) beats the best rule MOR on FULL, but the pool still loses to Random (327.2) and the best rule, so Gate P still FAILS (1/3 seeds). Verdict stands."
+}

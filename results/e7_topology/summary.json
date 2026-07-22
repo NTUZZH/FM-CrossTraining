@@ -1,0 +1,211 @@
+{
+  "meta": {
+    "method_envelope": [
+      "edd",
+      "wspt",
+      "atc",
+      "pfifo",
+      "mor",
+      "lfj_atc",
+      "atc_eta",
+      "random"
+    ],
+    "m": 0.6,
+    "n_instances_expected": 763,
+    "reconciliation": "fixed-EDD rho_chain_released at m0.6 eta1.0 = 0.874 reproduces the plan's A-1 fixed-dispatcher EDD capture (0.874); rules+Random envelope gives 0.853. chain_adj capture is slightly ABOVE released chain in every measure (envelope 0.881 vs 0.853; EDD 0.897 vs 0.874)."
+  },
+  "1_chain_adj": {
+    "eta1.0": {
+      "n": 763,
+      "envelope": {
+        "twt_L0": 328.96542005242463,
+        "twt_chain_released": 316.5368170380079,
+        "twt_chain_adj": 316.1343431192661,
+        "twt_full": 314.39764167758847,
+        "best_method": {
+          "L0": "lfj_atc",
+          "chain": "edd",
+          "chain_adj": "edd",
+          "full": "edd"
+        },
+        "Delta_chain_released": 12.428603014416751,
+        "Delta_chain_adj": 12.831076933158556,
+        "Delta_full": 14.567778374836166,
+        "rho_chain_released": 0.85315706311715,
+        "rho_chain_adj": 0.8807847430822038
+      },
+      "fixed_EDD": {
+        "twt_L0": 331.3168737876802,
+        "twt_chain_released": 316.5368170380078,
+        "twt_chain_adj": 316.1343431192661,
+        "twt_full": 314.39764167758847,
+        "Delta_chain_released": 14.780056749672383,
+        "Delta_chain_adj": 15.182530668414131,
+        "Delta_full": 16.91923211009174,
+        "rho_chain_released": 0.8735654581425469,
+        "rho_chain_adj": 0.8973534123548239
+      }
+    },
+    "eta0.8": {
+      "n": 763,
+      "envelope": {
+        "twt_L0": 328.96542005242463,
+        "twt_chain_released": 324.852229095675,
+        "twt_chain_adj": 324.65935570117955,
+        "twt_full": 325.75560602883354,
+        "best_method": {
+          "L0": "lfj_atc",
+          "chain": "edd",
+          "chain_adj": "edd",
+          "full": "mor"
+        },
+        "Delta_chain_released": 4.113190956749634,
+        "Delta_chain_adj": 4.306064351245084,
+        "Delta_full": 3.2098140235910932,
+        "rho_chain_released": 1.2814421416689605,
+        "rho_chain_adj": 1.3415307926244031
+      },
+      "fixed_EDD": {
+        "twt_L0": 331.3168737876802,
+        "twt_chain_released": 324.852229095675,
+        "twt_chain_adj": 324.65935570117955,
+        "twt_full": 329.5029449541284,
+        "Delta_chain_released": 6.4646446920052085,
+        "Delta_chain_adj": 6.657518086500659,
+        "Delta_full": 1.8139288335518131,
+        "rho_chain_released": 3.563891026169386,
+        "rho_chain_adj": 3.6702201119239737
+      }
+    },
+    "note_eta08": "At eta=0.8 Delta_full is near zero (penalized-FULL guard territory), so rho=Delta_chain/Delta_full is numerically unstable (>1, EDD 3.56); the robust quantities are the raw dividends: chain_adj Delta stays >= released chain Delta at both etas."
+  },
+  "2_permutations": {
+    "n": 763,
+    "eta": 1.0,
+    "note_E5": "released E5 perm seeds excluded: different scope (first 30 instances/campus, size 150 only, eta=0.8); not poolable with this eta=1.0 763-instance envelope",
+    "reference": {
+      "Delta_full": 14.567778374836166,
+      "Delta_chain_released": 12.428603014416751,
+      "Delta_chain_adj": 12.831076933158556,
+      "rho_chain_released": 0.85315706311715,
+      "rho_chain_adj": 0.8807847430822038
+    },
+    "envelope": {
+      "Delta_perm": {
+        "20260801": 12.88589266055044,
+        "20260802": 13.0193117955439,
+        "20260803": 12.392055701179515,
+        "20260804": 12.316570117955393,
+        "20260805": 12.770959239842739,
+        "20260806": 12.2719872870249,
+        "20260807": 13.020139449541261,
+        "20260808": 12.33494128440367,
+        "20260809": 12.287300786369599,
+        "20260810": 12.546673787680163
+      },
+      "rho_perm": {
+        "20260801": 0.8845475493235844,
+        "20260802": 0.8937060587105697,
+        "20260803": 0.8506482857115047,
+        "20260804": 0.8454666045188177,
+        "20260805": 0.8766579852630663,
+        "20260806": 0.8424062318399262,
+        "20260807": 0.8937628727268231,
+        "20260808": 0.8467276867494486,
+        "20260809": 0.8434574215924524,
+        "20260810": 0.8612619896354833
+      },
+      "Delta_min": 12.2719872870249,
+      "Delta_median": 12.46936474442984,
+      "Delta_max": 13.020139449541261,
+      "rho_min": 0.8424062318399262,
+      "rho_median": 0.855955137673494,
+      "rho_max": 0.8937628727268231
+    },
+    "fixed_EDD": {
+      "Delta_perm": {
+        "20260801": 15.237346395806071,
+        "20260802": 15.370765530799474,
+        "20260803": 14.743509436435147,
+        "20260804": 14.668023853211025,
+        "20260805": 15.122412975098314,
+        "20260806": 14.623441022280417,
+        "20260807": 15.371593184796836,
+        "20260808": 14.686395019659244,
+        "20260809": 14.638754521625117,
+        "20260810": 14.898127522935738
+      },
+      "rho_perm": {
+        "20260801": 0.9005932595911086,
+        "20260802": 0.9084789091362687,
+        "20260803": 0.8714053534167872,
+        "20260804": 0.8669438280512773,
+        "20260805": 0.8938001959366887,
+        "20260806": 0.864308789378097,
+        "20260807": 0.9085278270772235,
+        "20260808": 0.8680296436680075,
+        "20260809": 0.8652138836072591,
+        "20260810": 0.8805439529403652
+      },
+      "Delta_min": 14.623441022280417,
+      "Delta_median": 14.820818479685443,
+      "Delta_max": 15.371593184796836,
+      "rho_min": 0.864308789378097,
+      "rho_median": 0.8759746531785761,
+      "rho_max": 0.9085278270772235
+    }
+  },
+  "3_tech_selection": {
+    "n": 763,
+    "Delta_chain1_env": 12.428603014416751,
+    "Delta_chain1_edd": 14.780056749672383,
+    "lowest_indexed_released": {
+      "twt_env": 317.1415651376147,
+      "Delta_env": 11.823854914809942,
+      "capture_of_chain1_env": 0.9513422305865493,
+      "twt_edd": 317.14156513761475,
+      "Delta_edd": 14.17530865006546,
+      "capture_of_chain1_edd": 0.9590835062510618
+    },
+    "random_draws": {
+      "20260821": {
+        "twt_env": 317.1415651376147,
+        "Delta_env": 11.823854914809942,
+        "capture_of_chain1_env": 0.9513422305865493,
+        "twt_edd": 317.14156513761475,
+        "Delta_edd": 14.17530865006546,
+        "capture_of_chain1_edd": 0.9590835062510618
+      },
+      "20260822": {
+        "twt_env": 317.1415651376147,
+        "Delta_env": 11.823854914809942,
+        "capture_of_chain1_env": 0.9513422305865493,
+        "twt_edd": 317.14156513761475,
+        "Delta_edd": 14.17530865006546,
+        "capture_of_chain1_edd": 0.9590835062510618
+      },
+      "20260823": {
+        "twt_env": 317.1415651376147,
+        "Delta_env": 11.823854914809942,
+        "capture_of_chain1_env": 0.9513422305865493,
+        "twt_edd": 317.14156513761475,
+        "Delta_edd": 14.17530865006546,
+        "capture_of_chain1_edd": 0.9590835062510618
+      }
+    },
+    "capture_env_min": 0.9513422305865493,
+    "capture_env_max": 0.9513422305865493,
+    "capture_env_spread": 0.0,
+    "mechanism": "TWT byte-identical across lowest-indexed and all 3 random draws (verified per-instance on contended c12_replay_400_0100: holder sets differ by 46-68 techs, EDD/ATC/MOR TWT identical to 4dp). Within a trade every cross-skilled technician carries the SAME successor skill and is functionally interchangeable, so which half receives it changes technician ids but not eligibility cardinality/capability; the id tie-break does not interact. Half-adoption capture is not merely stable, it is exactly invariant to the selection."
+  },
+  "4_sanity": {
+    "infeasible_rows": 0,
+    "total_rows": 91560,
+    "rows_by_kind": {
+      "chain_adj": 12208,
+      "perm": 61040,
+      "tsel": 18312
+    },
+    "expected_rows": 91560
+  }
+}

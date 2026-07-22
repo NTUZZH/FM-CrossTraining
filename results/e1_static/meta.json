@@ -1,0 +1,13 @@
+{
+  "methods": [
+    "rules",
+    "cpsat",
+    "ga",
+    "rl"
+  ],
+  "elapsed_s": 285.1986906528473,
+  "n_configs": 1800,
+  "n_run": 1800,
+  "n_errors": 0,
+  "finished": "2026-07-18 11:15:02"
+}

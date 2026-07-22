@@ -1,0 +1,36 @@
+{
+  "family": "e8_m07",
+  "m": 0.7,
+  "methods": [
+    "rules",
+    "rl"
+  ],
+  "note": "post-hoc robustness; NOT merged into tier1",
+  "elapsed_s": 5.315473318099976,
+  "n_configs": 3815,
+  "n_run": 23,
+  "n_errors": 0,
+  "rl_specs": [
+    "v2mlp301",
+    "v2mlp302",
+    "v2mlp303",
+    "v2mlp304",
+    "v2mlp305",
+    "v2mlp306",
+    "v2mlp307",
+    "v2mlp308",
+    "v2mlp309",
+    "v2mlp310",
+    "v2attn401",
+    "v2attn402",
+    "v2attn403",
+    "v2attn404",
+    "v2attn405",
+    "v2attn406",
+    "v2attn407",
+    "v2attn408",
+    "v2attn409",
+    "v2attn410"
+  ],
+  "finished": "2026-07-18 18:00:15"
+}

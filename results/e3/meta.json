@@ -1,0 +1,34 @@
+{
+  "family": "e3",
+  "methods": [
+    "rules",
+    "rl"
+  ],
+  "elapsed_s": 21102.166590213776,
+  "n_configs": 2400,
+  "n_run": 728,
+  "n_errors": 0,
+  "rl_specs": [
+    "v2mlp301",
+    "v2mlp302",
+    "v2mlp303",
+    "v2mlp304",
+    "v2mlp305",
+    "v2mlp306",
+    "v2mlp307",
+    "v2mlp308",
+    "v2mlp309",
+    "v2mlp310",
+    "v2attn401",
+    "v2attn402",
+    "v2attn403",
+    "v2attn404",
+    "v2attn405",
+    "v2attn406",
+    "v2attn407",
+    "v2attn408",
+    "v2attn409",
+    "v2attn410"
+  ],
+  "finished": "2026-07-18 10:53:55"
+}

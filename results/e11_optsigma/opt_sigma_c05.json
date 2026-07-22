@@ -1,0 +1,64 @@
+{
+ "campus": 5,
+ "sigma": {
+  "D30": "C10",
+  "D20": "B30",
+  "B30": "D50",
+  "D50": "D30",
+  "E20": "C30",
+  "C30": "D30",
+  "B20": "D30",
+  "C10": "D30",
+  "E10": "MISC",
+  "MISC": "D40",
+  "D40": "D30"
+ },
+ "order": [
+  "D30",
+  "D20",
+  "B30",
+  "D50",
+  "E20",
+  "C30",
+  "B20",
+  "C10",
+  "E10",
+  "MISC",
+  "D40"
+ ],
+ "obj_train_edd": 4.714568000000001,
+ "best_start": "chain",
+ "n_evals": 890,
+ "budget": 3000,
+ "n_train_instances": 200,
+ "m": 0.6,
+ "eta": 1.0,
+ "objective": "fixed-EDD mean TWT",
+ "descriptors": {
+  "n_trades": 11,
+  "n_arcs": 11,
+  "weak_components": 1,
+  "coverage_share": 0.6363636363636364,
+  "uncovered_trades": [
+   "D20",
+   "E20",
+   "B20",
+   "E10"
+  ],
+  "in_degree_max": 5,
+  "in_degree": {
+   "D30": 5,
+   "D20": 0,
+   "B30": 1,
+   "D50": 1,
+   "E20": 0,
+   "C30": 1,
+   "B20": 0,
+   "C10": 1,
+   "E10": 0,
+   "MISC": 1,
+   "D40": 1
+  }
+ },
+ "wall_s": 415.6375720500946
+}

@@ -1,0 +1,111 @@
+{
+  "m": 0.7,
+  "guard_pct": 0.02,
+  "threshold": 0.7,
+  "note": "post-hoc robustness; pre-registered verdict stands",
+  "sanity": {
+    "n_rows": 106820,
+    "n_infeasible": 0,
+    "all_validator_ok": true,
+    "m_values": [
+      0.7
+    ],
+    "eta_values": [
+      0.8,
+      1.0
+    ],
+    "structures": [
+      "chain",
+      "dedicated",
+      "full"
+    ],
+    "n_mlp_seeds": 10,
+    "n_attn_seeds": 10,
+    "cells": {
+      "eta1.0_dedicated": {
+        "n_instances_edd": 763,
+        "mlp_pool_complete_10x": true,
+        "attn_pool_complete_10x": true
+      },
+      "eta1.0_chain": {
+        "n_instances_edd": 763,
+        "mlp_pool_complete_10x": true,
+        "attn_pool_complete_10x": true
+      },
+      "eta1.0_full": {
+        "n_instances_edd": 763,
+        "mlp_pool_complete_10x": true,
+        "attn_pool_complete_10x": true
+      },
+      "eta0.8_dedicated": {
+        "n_instances_edd": 763,
+        "mlp_pool_complete_10x": true,
+        "attn_pool_complete_10x": true
+      },
+      "eta0.8_chain": {
+        "n_instances_edd": 763,
+        "mlp_pool_complete_10x": true,
+        "attn_pool_complete_10x": true
+      },
+      "eta0.8_full": {
+        "n_instances_edd": 763,
+        "mlp_pool_complete_10x": true,
+        "attn_pool_complete_10x": true
+      }
+    }
+  },
+  "families": {
+    "m0.7_eta1.0": {
+      "twt_best_L0": 324.7814723460026,
+      "twt_best_CHAIN": 315.2130790563565,
+      "twt_best_FULL": 314.37495203145477,
+      "argmin_L0": "atc",
+      "argmin_CHAIN": "policy_mlp",
+      "argmin_FULL": "edd",
+      "delta_chain": 9.56839328964611,
+      "delta_full": 10.406520314547834,
+      "delta_full_pct_of_L0": 3.204160705159115,
+      "delta_chain_pct_of_L0": 2.9461019498835577,
+      "guard_no_dividend": false,
+      "guard_pass_2pct": true,
+      "rho": 0.9194613569600147,
+      "rho_evaluable": true,
+      "rho_verdict": "pass"
+    },
+    "m0.7_eta0.8": {
+      "twt_best_L0": 324.7814723460026,
+      "twt_best_CHAIN": 322.51149226736567,
+      "twt_best_FULL": 321.0197777195282,
+      "argmin_L0": "atc",
+      "argmin_CHAIN": "edd",
+      "argmin_FULL": "mor",
+      "delta_chain": 2.2699800786369337,
+      "delta_full": 3.761694626474423,
+      "delta_full_pct_of_L0": 1.1582232814275009,
+      "delta_chain_pct_of_L0": 0.6989253611790496,
+      "guard_no_dividend": true,
+      "guard_pass_2pct": false,
+      "rho": 0.6034461337347922,
+      "rho_evaluable": false,
+      "rho_verdict": "not_evaluable"
+    }
+  },
+  "fixed_edd": {
+    "m0.7_eta1.0": {
+      "edd_L0": 327.01938663171694,
+      "edd_CHAIN": 315.4744559633028,
+      "edd_FULL": 314.37495203145477,
+      "delta_edd_chain": 11.544930668414167,
+      "delta_edd_full": 12.644434600262173,
+      "rho_fixed_edd": 0.9130444368129195
+    },
+    "m0.7_eta0.8": {
+      "edd_L0": 327.01938663171694,
+      "edd_CHAIN": 322.51149226736567,
+      "edd_FULL": 323.98063853211005,
+      "delta_edd_chain": 4.507894364351273,
+      "delta_edd_full": 3.0387480996068916,
+      "rho_fixed_edd": 1.483470895443567
+    }
+  }
+}

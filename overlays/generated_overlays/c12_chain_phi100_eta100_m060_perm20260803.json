@@ -1,0 +1,929 @@
+{
+ "overlay_id": "c12_chain_phi100_eta100_m060_perm20260803",
+ "campus": 12,
+ "structure": "chain",
+ "phi": 1.0,
+ "eta": 1.0,
+ "crew_multiplier": 0.6,
+ "chain_order": [
+  "D30",
+  "D40",
+  "B30",
+  "E20",
+  "UNK",
+  "E10",
+  "D90",
+  "MISC",
+  "D20",
+  "C10",
+  "B20",
+  "C30",
+  "D50"
+ ],
+ "budget_B": 112,
+ "headcount": 112,
+ "technicians": [
+  {
+   "id": "T0",
+   "primary": "B20",
+   "skills": [
+    "B20",
+    "C30"
+   ]
+  },
+  {
+   "id": "T1",
+   "primary": "B20",
+   "skills": [
+    "B20",
+    "C30"
+   ]
+  },
+  {
+   "id": "T2",
+   "primary": "B20",
+   "skills": [
+    "B20",
+    "C30"
+   ]
+  },
+  {
+   "id": "T3",
+   "primary": "B20",
+   "skills": [
+    "B20",
+    "C30"
+   ]
+  },
+  {
+   "id": "T4",
+   "primary": "B20",
+   "skills": [
+    "B20",
+    "C30"
+   ]
+  },
+  {
+   "id": "T5",
+   "primary": "B30",
+   "skills": [
+    "B30",
+    "E20"
+   ]
+  },
+  {
+   "id": "T6",
+   "primary": "B30",
+   "skills": [
+    "B30",
+    "E20"
+   ]
+  },
+  {
+   "id": "T7",
+   "primary": "B30",
+   "skills": [
+    "B30",
+    "E20"
+   ]
+  },
+  {
+   "id": "T8",
+   "primary": "B30",
+   "skills": [
+    "B30",
+    "E20"
+   ]
+  },
+  {
+   "id": "T9",
+   "primary": "C10",
+   "skills": [
+    "C10",
+    "B20"
+   ]
+  },
+  {
+   "id": "T10",
+   "primary": "C10",
+   "skills": [
+    "C10",
+    "B20"
+   ]
+  },
+  {
+   "id": "T11",
+   "primary": "C10",
+   "skills": [
+    "C10",
+    "B20"
+   ]
+  },
+  {
+   "id": "T12",
+   "primary": "C10",
+   "skills": [
+    "C10",
+    "B20"
+   ]
+  },
+  {
+   "id": "T13",
+   "primary": "C10",
+   "skills": [
+    "C10",
+    "B20"
+   ]
+  },
+  {
+   "id": "T14",
+   "primary": "C10",
+   "skills": [
+    "C10",
+    "B20"
+   ]
+  },
+  {
+   "id": "T15",
+   "primary": "C10",
+   "skills": [
+    "C10",
+    "B20"
+   ]
+  },
+  {
+   "id": "T16",
+   "primary": "C30",
+   "skills": [
+    "C30",
+    "D50"
+   ]
+  },
+  {
+   "id": "T17",
+   "primary": "C30",
+   "skills": [
+    "C30",
+    "D50"
+   ]
+  },
+  {
+   "id": "T18",
+   "primary": "C30",
+   "skills": [
+    "C30",
+    "D50"
+   ]
+  },
+  {
+   "id": "T19",
+   "primary": "C30",
+   "skills": [
+    "C30",
+    "D50"
+   ]
+  },
+  {
+   "id": "T20",
+   "primary": "C30",
+   "skills": [
+    "C30",
+    "D50"
+   ]
+  },
+  {
+   "id": "T21",
+   "primary": "C30",
+   "skills": [
+    "C30",
+    "D50"
+   ]
+  },
+  {
+   "id": "T22",
+   "primary": "C30",
+   "skills": [
+    "C30",
+    "D50"
+   ]
+  },
+  {
+   "id": "T23",
+   "primary": "C30",
+   "skills": [
+    "C30",
+    "D50"
+   ]
+  },
+  {
+   "id": "T24",
+   "primary": "D20",
+   "skills": [
+    "D20",
+    "C10"
+   ]
+  },
+  {
+   "id": "T25",
+   "primary": "D20",
+   "skills": [
+    "D20",
+    "C10"
+   ]
+  },
+  {
+   "id": "T26",
+   "primary": "D20",
+   "skills": [
+    "D20",
+    "C10"
+   ]
+  },
+  {
+   "id": "T27",
+   "primary": "D20",
+   "skills": [
+    "D20",
+    "C10"
+   ]
+  },
+  {
+   "id": "T28",
+   "primary": "D20",
+   "skills": [
+    "D20",
+    "C10"
+   ]
+  },
+  {
+   "id": "T29",
+   "primary": "D20",
+   "skills": [
+    "D20",
+    "C10"
+   ]
+  },
+  {
+   "id": "T30",
+   "primary": "D20",
+   "skills": [
+    "D20",
+    "C10"
+   ]
+  },
+  {
+   "id": "T31",
+   "primary": "D20",
+   "skills": [
+    "D20",
+    "C10"
+   ]
+  },
+  {
+   "id": "T32",
+   "primary": "D20",
+   "skills": [
+    "D20",
+    "C10"
+   ]
+  },
+  {
+   "id": "T33",
+   "primary": "D20",
+   "skills": [
+    "D20",
+    "C10"
+   ]
+  },
+  {
+   "id": "T34",
+   "primary": "D20",
+   "skills": [
+    "D20",
+    "C10"
+   ]
+  },
+  {
+   "id": "T35",
+   "primary": "D20",
+   "skills": [
+    "D20",
+    "C10"
+   ]
+  },
+  {
+   "id": "T36",
+   "primary": "D20",
+   "skills": [
+    "D20",
+    "C10"
+   ]
+  },
+  {
+   "id": "T37",
+   "primary": "D20",
+   "skills": [
+    "D20",
+    "C10"
+   ]
+  },
+  {
+   "id": "T38",
+   "primary": "D20",
+   "skills": [
+    "D20",
+    "C10"
+   ]
+  },
+  {
+   "id": "T39",
+   "primary": "D20",
+   "skills": [
+    "D20",
+    "C10"
+   ]
+  },
+  {
+   "id": "T40",
+   "primary": "D20",
+   "skills": [
+    "D20",
+    "C10"
+   ]
+  },
+  {
+   "id": "T41",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T42",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T43",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T44",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T45",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T46",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T47",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T48",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T49",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T50",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T51",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T52",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T53",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T54",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T55",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T56",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T57",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T58",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T59",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T60",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T61",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T62",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T63",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T64",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T65",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D40"
+   ]
+  },
+  {
+   "id": "T66",
+   "primary": "D40",
+   "skills": [
+    "D40",
+    "B30"
+   ]
+  },
+  {
+   "id": "T67",
+   "primary": "D40",
+   "skills": [
+    "D40",
+    "B30"
+   ]
+  },
+  {
+   "id": "T68",
+   "primary": "D40",
+   "skills": [
+    "D40",
+    "B30"
+   ]
+  },
+  {
+   "id": "T69",
+   "primary": "D40",
+   "skills": [
+    "D40",
+    "B30"
+   ]
+  },
+  {
+   "id": "T70",
+   "primary": "D40",
+   "skills": [
+    "D40",
+    "B30"
+   ]
+  },
+  {
+   "id": "T71",
+   "primary": "D50",
+   "skills": [
+    "D50",
+    "D30"
+   ]
+  },
+  {
+   "id": "T72",
+   "primary": "D50",
+   "skills": [
+    "D50",
+    "D30"
+   ]
+  },
+  {
+   "id": "T73",
+   "primary": "D50",
+   "skills": [
+    "D50",
+    "D30"
+   ]
+  },
+  {
+   "id": "T74",
+   "primary": "D50",
+   "skills": [
+    "D50",
+    "D30"
+   ]
+  },
+  {
+   "id": "T75",
+   "primary": "D50",
+   "skills": [
+    "D50",
+    "D30"
+   ]
+  },
+  {
+   "id": "T76",
+   "primary": "D50",
+   "skills": [
+    "D50",
+    "D30"
+   ]
+  },
+  {
+   "id": "T77",
+   "primary": "D50",
+   "skills": [
+    "D50",
+    "D30"
+   ]
+  },
+  {
+   "id": "T78",
+   "primary": "D50",
+   "skills": [
+    "D50",
+    "D30"
+   ]
+  },
+  {
+   "id": "T79",
+   "primary": "D50",
+   "skills": [
+    "D50",
+    "D30"
+   ]
+  },
+  {
+   "id": "T80",
+   "primary": "D50",
+   "skills": [
+    "D50",
+    "D30"
+   ]
+  },
+  {
+   "id": "T81",
+   "primary": "D50",
+   "skills": [
+    "D50",
+    "D30"
+   ]
+  },
+  {
+   "id": "T82",
+   "primary": "D50",
+   "skills": [
+    "D50",
+    "D30"
+   ]
+  },
+  {
+   "id": "T83",
+   "primary": "D50",
+   "skills": [
+    "D50",
+    "D30"
+   ]
+  },
+  {
+   "id": "T84",
+   "primary": "D50",
+   "skills": [
+    "D50",
+    "D30"
+   ]
+  },
+  {
+   "id": "T85",
+   "primary": "D90",
+   "skills": [
+    "D90",
+    "MISC"
+   ]
+  },
+  {
+   "id": "T86",
+   "primary": "D90",
+   "skills": [
+    "D90",
+    "MISC"
+   ]
+  },
+  {
+   "id": "T87",
+   "primary": "D90",
+   "skills": [
+    "D90",
+    "MISC"
+   ]
+  },
+  {
+   "id": "T88",
+   "primary": "D90",
+   "skills": [
+    "D90",
+    "MISC"
+   ]
+  },
+  {
+   "id": "T89",
+   "primary": "D90",
+   "skills": [
+    "D90",
+    "MISC"
+   ]
+  },
+  {
+   "id": "T90",
+   "primary": "D90",
+   "skills": [
+    "D90",
+    "MISC"
+   ]
+  },
+  {
+   "id": "T91",
+   "primary": "E10",
+   "skills": [
+    "E10",
+    "D90"
+   ]
+  },
+  {
+   "id": "T92",
+   "primary": "E10",
+   "skills": [
+    "E10",
+    "D90"
+   ]
+  },
+  {
+   "id": "T93",
+   "primary": "E10",
+   "skills": [
+    "E10",
+    "D90"
+   ]
+  },
+  {
+   "id": "T94",
+   "primary": "E10",
+   "skills": [
+    "E10",
+    "D90"
+   ]
+  },
+  {
+   "id": "T95",
+   "primary": "E10",
+   "skills": [
+    "E10",
+    "D90"
+   ]
+  },
+  {
+   "id": "T96",
+   "primary": "E20",
+   "skills": [
+    "E20",
+    "UNK"
+   ]
+  },
+  {
+   "id": "T97",
+   "primary": "E20",
+   "skills": [
+    "E20",
+    "UNK"
+   ]
+  },
+  {
+   "id": "T98",
+   "primary": "E20",
+   "skills": [
+    "E20",
+    "UNK"
+   ]
+  },
+  {
+   "id": "T99",
+   "primary": "E20",
+   "skills": [
+    "E20",
+    "UNK"
+   ]
+  },
+  {
+   "id": "T100",
+   "primary": "E20",
+   "skills": [
+    "E20",
+    "UNK"
+   ]
+  },
+  {
+   "id": "T101",
+   "primary": "MISC",
+   "skills": [
+    "MISC",
+    "D20"
+   ]
+  },
+  {
+   "id": "T102",
+   "primary": "MISC",
+   "skills": [
+    "MISC",
+    "D20"
+   ]
+  },
+  {
+   "id": "T103",
+   "primary": "MISC",
+   "skills": [
+    "MISC",
+    "D20"
+   ]
+  },
+  {
+   "id": "T104",
+   "primary": "MISC",
+   "skills": [
+    "MISC",
+    "D20"
+   ]
+  },
+  {
+   "id": "T105",
+   "primary": "MISC",
+   "skills": [
+    "MISC",
+    "D20"
+   ]
+  },
+  {
+   "id": "T106",
+   "primary": "MISC",
+   "skills": [
+    "MISC",
+    "D20"
+   ]
+  },
+  {
+   "id": "T107",
+   "primary": "MISC",
+   "skills": [
+    "MISC",
+    "D20"
+   ]
+  },
+  {
+   "id": "T108",
+   "primary": "MISC",
+   "skills": [
+    "MISC",
+    "D20"
+   ]
+  },
+  {
+   "id": "T109",
+   "primary": "UNK",
+   "skills": [
+    "UNK",
+    "E10"
+   ]
+  },
+  {
+   "id": "T110",
+   "primary": "UNK",
+   "skills": [
+    "UNK",
+    "E10"
+   ]
+  },
+  {
+   "id": "T111",
+   "primary": "UNK",
+   "skills": [
+    "UNK",
+    "E10"
+   ]
+  }
+ ],
+ "variant": "perm20260803",
+ "selection": "lowest_indexed",
+ "provenance": {
+  "crews": "[C] Y1 p95 calibration (capacity.csv)",
+  "skills": "[D] topology overlay, base seed 20260707, chain perm 20260803"
+ }
+}

@@ -1,0 +1,280 @@
+{
+ "descriptors": {
+  "feas": {
+   "components_range": [
+    1,
+    1
+   ],
+   "coverage_mean": 0.7395104895104895,
+   "coverage_range": [
+    0.6923076923076923,
+    0.7692307692307693
+   ],
+   "indeg_max_range": [
+    2,
+    3
+   ],
+   "wcov_mean": 0.6127762970297239
+  },
+  "pairs": {
+   "components_range": [
+    5,
+    6
+   ],
+   "coverage_mean": 1.0,
+   "coverage_range": [
+    1.0,
+    1.0
+   ],
+   "indeg_max_range": [
+    1,
+    1
+   ],
+   "wcov_mean": 1.0000000000000002
+  },
+  "rand1_20260901": {
+   "components_range": [
+    1,
+    1
+   ],
+   "coverage_mean": 0.6940559440559441,
+   "coverage_range": [
+    0.5454545454545454,
+    0.7692307692307693
+   ],
+   "indeg_max_range": [
+    2,
+    3
+   ],
+   "wcov_mean": 0.7892505569410113
+  },
+  "rand1_20260902": {
+   "components_range": [
+    1,
+    1
+   ],
+   "coverage_mean": 0.5402097902097901,
+   "coverage_range": [
+    0.5384615384615384,
+    0.5454545454545454
+   ],
+   "indeg_max_range": [
+    3,
+    5
+   ],
+   "wcov_mean": 0.3717659107695324
+  },
+  "rand1_20260903": {
+   "components_range": [
+    1,
+    1
+   ],
+   "coverage_mean": 0.5437062937062938,
+   "coverage_range": [
+    0.46153846153846156,
+    0.6363636363636364
+   ],
+   "indeg_max_range": [
+    3,
+    4
+   ],
+   "wcov_mean": 0.36020079491447293
+  },
+  "star": {
+   "components_range": [
+    1,
+    1
+   ],
+   "coverage_mean": 0.16083916083916083,
+   "coverage_range": [
+    0.15384615384615385,
+    0.18181818181818182
+   ],
+   "indeg_max_range": [
+    10,
+    12
+   ],
+   "wcov_mean": 0.5142233903341038
+  }
+ },
+ "eta0.8": {
+  "chain": {
+   "best_method": "edd",
+   "capture_edd": 3.563891026169386,
+   "capture_envelope": 1.2814421416689605,
+   "twt_edd": 324.852229095675,
+   "twt_envelope": 324.852229095675
+  },
+  "chain_adj": {
+   "best_method": "edd",
+   "capture_edd": 3.6702201119239737,
+   "capture_envelope": 1.3415307926244031,
+   "twt_edd": 324.65935570117955,
+   "twt_envelope": 324.65935570117955
+  },
+  "delta_full_edd": 1.8139288335518131,
+  "delta_full_envelope": 3.2098140235910932,
+  "feas": {
+   "best_method": "edd",
+   "capture_edd": 2.6171525324239933,
+   "capture_envelope": 0.7464216579223883,
+   "twt_edd": 326.5695453473132,
+   "twt_envelope": 326.56954534731324
+  },
+  "full": {
+   "best_method": "mor",
+   "capture_edd": 1.0,
+   "capture_envelope": 1.0,
+   "twt_edd": 329.5029449541284,
+   "twt_envelope": 325.75560602883354
+  },
+  "gen": {
+   "best_method": "edd",
+   "capture_edd": 3.899989501655113,
+   "capture_envelope": 1.4713779794201738,
+   "twt_edd": 324.24257038007863,
+   "twt_envelope": 324.24257038007863
+  },
+  "l0": {
+   "best_method": "lfj_atc",
+   "twt_edd": 331.3168737876802,
+   "twt_envelope": 328.96542005242463
+  },
+  "pairs": {
+   "best_method": "edd",
+   "capture_edd": 2.052509859448577,
+   "capture_envelope": 0.42733101353111796,
+   "twt_edd": 327.59376697247706,
+   "twt_envelope": 327.59376697247706
+  },
+  "star": {
+   "best_method": "edd",
+   "capture_edd": -2.8775057753540096,
+   "capture_envelope": -2.3587174752921367,
+   "twt_edd": 336.5364644823067,
+   "twt_envelope": 336.5364644823067
+  }
+ },
+ "eta1.0": {
+  "chain": {
+   "best_method": "edd",
+   "capture_edd": 0.8735654581425469,
+   "capture_envelope": 0.85315706311715,
+   "twt_edd": 316.5368170380078,
+   "twt_envelope": 316.5368170380079
+  },
+  "chain_adj": {
+   "best_method": "edd",
+   "capture_edd": 0.8973534123548239,
+   "capture_envelope": 0.8807847430822038,
+   "twt_edd": 316.1343431192661,
+   "twt_envelope": 316.1343431192661
+  },
+  "delta_full_edd": 16.91923211009174,
+  "delta_full_envelope": 14.567778374836166,
+  "feas": {
+   "best_method": "atc",
+   "capture_edd": 0.6668661031366344,
+   "capture_envelope": 0.6418785929186143,
+   "twt_edd": 320.0340114023591,
+   "twt_envelope": 319.6146749672346
+  },
+  "full": {
+   "best_method": "edd",
+   "capture_edd": 1.0,
+   "capture_envelope": 1.0,
+   "twt_edd": 314.39764167758847,
+   "twt_envelope": 314.39764167758847
+  },
+  "gen": {
+   "best_method": "edd",
+   "capture_edd": 0.9008537059902841,
+   "capture_envelope": 0.8848500356029994,
+   "twt_edd": 316.07512083879425,
+   "twt_envelope": 316.07512083879425
+  },
+  "l0": {
+   "best_method": "lfj_atc",
+   "twt_edd": 331.3168737876802,
+   "twt_envelope": 328.96542005242463
+  },
+  "pairs": {
+   "best_method": "edd",
+   "capture_edd": 0.8977890957548434,
+   "capture_envelope": 0.8812907521922942,
+   "twt_edd": 316.12697169069463,
+   "twt_envelope": 316.12697169069463
+  },
+  "rand1_20260901": {
+   "best_method": "atc",
+   "capture_edd": 0.6436791927813155,
+   "capture_envelope": 0.6992403628651397,
+   "twt_edd": 320.42631612057664,
+   "twt_envelope": 318.77904141546526
+  },
+  "rand1_20260902": {
+   "best_method": "edd",
+   "capture_edd": 0.2997884382326469,
+   "capture_envelope": 0.18676399140065017,
+   "twt_edd": 326.24468361730015,
+   "twt_envelope": 326.24468361730015
+  },
+  "rand1_20260903": {
+   "best_method": "atc",
+   "capture_edd": 0.4985691599099276,
+   "capture_envelope": 0.4245701358414559,
+   "twt_edd": 322.8814664482307,
+   "twt_envelope": 322.7803764089122
+  },
+  "star": {
+   "best_method": "lfj_atc",
+   "capture_edd": 0.12719462518325828,
+   "capture_envelope": 0.17736052948467745,
+   "twt_edd": 329.16483840104854,
+   "twt_envelope": 326.38167116644826
+  }
+ },
+ "n_instances": 763,
+ "pairs_vs_chain_edd": {
+  "eta0.8": {
+   "ci": [
+    1.256730131061601,
+    4.2511999606815225
+   ],
+   "mean_diff_pairs_minus_chain": 2.7415378768020977,
+   "n": 763,
+   "wilcoxon_p": 0.00019035307658940773
+  },
+  "eta1.0": {
+   "ci": [
+    -0.9174236041939727,
+    0.0769328571428583
+   ],
+   "mean_diff_pairs_minus_chain": -0.4098453473132367,
+   "n": 763,
+   "wilcoxon_p": 0.07623003935783448
+  }
+ },
+ "policy_undercut_check": {
+  "chain_eta0.8": {
+   "best_policy_class_mean": 326.6464661074705,
+   "envelope": 324.852229095675,
+   "policy_undercuts": false
+  },
+  "chain_eta1.0": {
+   "best_policy_class_mean": 316.2967785976409,
+   "envelope": 316.5368170380079,
+   "policy_undercuts": true
+  },
+  "full_eta0.8": {
+   "best_policy_class_mean": 338.3421125294889,
+   "envelope": 325.75560602883354,
+   "policy_undercuts": false
+  },
+  "full_eta1.0": {
+   "best_policy_class_mean": 314.4082770380079,
+   "envelope": 314.39764167758847,
+   "policy_undercuts": false
+  }
+ }
+}

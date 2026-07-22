@@ -1,0 +1,151 @@
+{
+  "cells_eta": 0.8,
+  "r3c3_secondary_share": {
+    "full_m60": {
+      "edd": {
+        "count_share": 0.33393512450851903,
+        "hours_share_pbh": 0.2565402130829029,
+        "hours_share_realized": 0.2908646002264126
+      },
+      "mlp": {
+        "count_share": 0.5168901266928789,
+        "hours_share_pbh": 0.45638293685666953,
+        "hours_share_realized": 0.4999827645998497
+      },
+      "attn": {
+        "count_share": 0.34463051550895585,
+        "hours_share_pbh": 0.27082553571189477,
+        "hours_share_realized": 0.30900088141379717
+      }
+    },
+    "full_m80": {
+      "edd": {
+        "count_share": 0.262737003058104,
+        "hours_share_pbh": 0.18603727454302663,
+        "hours_share_realized": 0.21221171418714369
+      },
+      "mlp": {
+        "count_share": 0.48428866317169067,
+        "hours_share_pbh": 0.4208308850619959,
+        "hours_share_realized": 0.46155560837988285
+      },
+      "attn": {
+        "count_share": 0.2866048492791612,
+        "hours_share_pbh": 0.211247135166773,
+        "hours_share_realized": 0.24240822121397856
+      }
+    },
+    "chain_m60": {
+      "edd": {
+        "count_share": 0.20521515945827873,
+        "hours_share_pbh": 0.15872995436748105,
+        "hours_share_realized": 0.18641461326446915
+      },
+      "mlp": {
+        "count_share": 0.2560394276976846,
+        "hours_share_pbh": 0.20630563070486826,
+        "hours_share_realized": 0.23999467362713484
+      },
+      "attn": {
+        "count_share": 0.2060064438619484,
+        "hours_share_pbh": 0.16163119313829993,
+        "hours_share_realized": 0.19042331163389015
+      }
+    },
+    "chain_m80": {
+      "edd": {
+        "count_share": 0.16756006989951946,
+        "hours_share_pbh": 0.11834066077639736,
+        "hours_share_realized": 0.1393450926605277
+      },
+      "mlp": {
+        "count_share": 0.23688794233289645,
+        "hours_share_pbh": 0.18507900856219145,
+        "hours_share_realized": 0.21475484227098798
+      },
+      "attn": {
+        "count_share": 0.1742695500218436,
+        "hours_share_pbh": 0.12743238234349946,
+        "hours_share_realized": 0.1505315897250188
+      }
+    }
+  },
+  "r3c3_overuse_vs_edd": {
+    "full_m60": {
+      "mlp_minus_edd": 0.1829550021843599,
+      "attn_minus_edd": 0.010695391000436816
+    },
+    "full_m80": {
+      "mlp_minus_edd": 0.22155166011358668,
+      "attn_minus_edd": 0.0238678462210572
+    },
+    "chain_m60": {
+      "mlp_minus_edd": 0.05082426823940589,
+      "attn_minus_edd": 0.0007912844036696842
+    },
+    "chain_m80": {
+      "mlp_minus_edd": 0.06932787243337699,
+      "attn_minus_edd": 0.006709480122324141
+    }
+  },
+  "r16_cap_stats": {
+    "full_m60": {
+      "mlp": {
+        "pair_cap_bind_frac": 0.15949399301004805,
+        "order_cap_bind_frac": 0.08946395806028834,
+        "edd_excluded_frac": 0.025955657492354744
+      },
+      "attn": {
+        "pair_cap_bind_frac": 0.1692353647881171,
+        "order_cap_bind_frac": 0.08870937090432503,
+        "edd_excluded_frac": 0.03223176059414592
+      }
+    },
+    "full_m80": {
+      "mlp": {
+        "pair_cap_bind_frac": 0.1777276103101791,
+        "order_cap_bind_frac": 0.08096395806028832,
+        "edd_excluded_frac": 0.03043971166448231
+      },
+      "attn": {
+        "pair_cap_bind_frac": 0.18499246395806027,
+        "order_cap_bind_frac": 0.08034043250327653,
+        "edd_excluded_frac": 0.03821035386631717
+      }
+    },
+    "chain_m60": {
+      "mlp": {
+        "pair_cap_bind_frac": 0.010946810834425513,
+        "order_cap_bind_frac": 0.07543938401048492,
+        "edd_excluded_frac": 0.008105395369156837
+      },
+      "attn": {
+        "pair_cap_bind_frac": 0.0113348623853211,
+        "order_cap_bind_frac": 0.07699661424202708,
+        "edd_excluded_frac": 0.009896679772826562
+      }
+    },
+    "chain_m80": {
+      "mlp": {
+        "pair_cap_bind_frac": 0.013880187854958497,
+        "order_cap_bind_frac": 0.07125436871996506,
+        "edd_excluded_frac": 0.008105067715159458
+      },
+      "attn": {
+        "pair_cap_bind_frac": 0.014366207951070338,
+        "order_cap_bind_frac": 0.07326594582787244,
+        "edd_excluded_frac": 0.010118829183049368
+      }
+    }
+  },
+  "sanity": {
+    "instrument_rows": 64092,
+    "instrument_infeasible": 0,
+    "instrument_twt_mismatch": 0,
+    "bigcap_rows": 61040,
+    "bigcap_infeasible": 0,
+    "bigcap_std_twt_mismatch": 0,
+    "instrument_configs": 3052,
+    "bigcap_configs": 1526
+  }
+}

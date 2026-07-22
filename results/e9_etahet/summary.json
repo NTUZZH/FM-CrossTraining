@@ -1,0 +1,190 @@
+{
+ "sanity": {
+  "n_rows": 36624,
+  "n_configs": 4578,
+  "n_configs_expected": 4578,
+  "n_infeasible": 0,
+  "all_validator_ok": true,
+  "methods": [
+   "atc",
+   "atc_eta",
+   "edd",
+   "lfj_atc",
+   "mor",
+   "pfifo",
+   "random",
+   "wspt"
+  ],
+  "draw_seeds": [
+   20260831,
+   20260832,
+   20260833
+  ],
+  "rows_per_config": 8
+ },
+ "L0": {
+  "env": 328.96542005242463,
+  "env_method": "lfj_atc",
+  "edd": 331.3168737876802
+ },
+ "uniform08_ref": {
+  "chain": {
+   "env": 324.852229095675,
+   "env_method": "edd",
+   "edd": 324.852229095675
+  },
+  "full": {
+   "env": 325.75560602883354,
+   "env_method": "mor",
+   "edd": 329.5029449541284
+  },
+  "delta": {
+   "env_chain": 4.113190956749634,
+   "env_full": 3.2098140235910932,
+   "edd_chain": 6.4646446920052085,
+   "edd_full": 1.8139288335518131
+  }
+ },
+ "per_draw": {
+  "20260831": {
+   "realized_mean_eta": 0.8186373212741933,
+   "chain_env": 323.84273420707734,
+   "chain_env_method": "edd",
+   "chain_edd": 323.84273420707734,
+   "full_env": 325.3394733944954,
+   "full_env_method": "mor",
+   "full_edd": 329.146538925295,
+   "delta_env_chain": 5.122685845347291,
+   "delta_env_full": 3.6259466579292052,
+   "delta_edd_chain": 7.474139580602866,
+   "delta_edd_full": 2.170334862385232,
+   "chain_ge_full_env": true,
+   "chain_ge_full_edd": true
+  },
+  "20260832": {
+   "realized_mean_eta": 0.8234687390995336,
+   "chain_env": 325.633133682831,
+   "chain_env_method": "edd",
+   "chain_edd": 325.633133682831,
+   "full_env": 325.3325955439056,
+   "full_env_method": "mor",
+   "full_edd": 328.34480602883355,
+   "delta_env_chain": 3.332286369593646,
+   "delta_env_full": 3.632824508519036,
+   "delta_edd_chain": 5.683740104849221,
+   "delta_edd_full": 2.972067758846663,
+   "chain_ge_full_env": false,
+   "chain_ge_full_edd": true
+  },
+  "20260833": {
+   "realized_mean_eta": 0.8278222001750288,
+   "chain_env": 323.6180639580603,
+   "chain_env_method": "edd",
+   "chain_edd": 323.6180639580603,
+   "full_env": 324.787729750983,
+   "full_env_method": "mor",
+   "full_edd": 327.9952191349934,
+   "delta_env_chain": 5.347356094364329,
+   "delta_env_full": 4.1776903014416575,
+   "delta_edd_chain": 7.698809829619904,
+   "delta_edd_full": 3.3216546526867887,
+   "chain_ge_full_env": true,
+   "chain_ge_full_edd": true
+  }
+ },
+ "top3": {
+  "uniform": {
+   "chain": [
+    "edd",
+    "pfifo",
+    "atc_eta"
+   ],
+   "full": [
+    "mor",
+    "edd",
+    "pfifo"
+   ]
+  },
+  "het": {
+   "20260831": {
+    "chain": [
+     "edd",
+     "pfifo",
+     "lfj_atc"
+    ],
+    "full": [
+     "mor",
+     "edd",
+     "pfifo"
+    ]
+   },
+   "20260832": {
+    "chain": [
+     "edd",
+     "pfifo",
+     "atc_eta"
+    ],
+    "full": [
+     "mor",
+     "edd",
+     "pfifo"
+    ]
+   },
+   "20260833": {
+    "chain": [
+     "edd",
+     "pfifo",
+     "lfj_atc"
+    ],
+    "full": [
+     "mor",
+     "edd",
+     "pfifo"
+    ]
+   }
+  }
+ },
+ "correlation_meanEta_vs_movement_n3": {
+  "mean_eta": [
+   0.8186373212741933,
+   0.8234687390995336,
+   0.8278222001750288
+  ],
+  "delta_env_chain": {
+   "movement": [
+    1.009,
+    -0.781,
+    1.234
+   ],
+   "pearson_r_n3": 0.07180735644428804
+  },
+  "delta_env_full": {
+   "movement": [
+    0.416,
+    0.423,
+    0.968
+   ],
+   "pearson_r_n3": 0.8562808973445567
+  },
+  "delta_edd_chain": {
+   "movement": [
+    1.009,
+    -0.781,
+    1.234
+   ],
+   "pearson_r_n3": 0.07180735644428804
+  },
+  "delta_edd_full": {
+   "movement": [
+    0.356,
+    1.158,
+    1.508
+   ],
+   "pearson_r_n3": 0.9814462352564556
+  }
+ },
+ "claim_chain_ge_full": {
+  "env_all_draws": false,
+  "edd_all_draws": true
+ }
+}

@@ -1,0 +1,222 @@
+{
+  "cells": {
+    "chain_m0.6": {
+      "n": 763,
+      "edd_mean": 324.852229095675,
+      "patient_mean": 318.887478768021,
+      "abs_change": -5.964750327653974,
+      "pct_change": -1.836142649923835,
+      "by_campus": {
+        "5": {
+          "n": 192,
+          "edd": 5.487390625000001,
+          "patient": 4.683105208333334,
+          "pct": -14.656973990559793
+        },
+        "9": {
+          "n": 171,
+          "edd": 190.54048421052633,
+          "patient": 189.1213029239766,
+          "pct": -0.7448187677437044
+        },
+        "10": {
+          "n": 200,
+          "edd": 94.65107,
+          "patient": 92.7489275,
+          "pct": -2.0096365524446904
+        },
+        "12": {
+          "n": 200,
+          "edd": 976.480175,
+          "patient": 957.612309,
+          "pct": -1.9322323671343402
+        }
+      },
+      "declines": {
+        "mean_per_inst": 974.5570117955439,
+        "mean_wait_bh": 160.66754692005202,
+        "inst_with_idle_pct": 97.90301441677587,
+        "orders_ran_primary": 30173,
+        "orders_ran_secondary": 17576,
+        "pct_primary": 63.190852164443235
+      }
+    },
+    "chain_m0.8": {
+      "n": 763,
+      "edd_mean": 318.3586513761468,
+      "patient_mean": 316.3562885976409,
+      "abs_change": -2.0023627785058693,
+      "pct_change": -0.6289644618892545,
+      "by_campus": {
+        "5": {
+          "n": 192,
+          "edd": 4.610893750000001,
+          "patient": 4.551351041666668,
+          "pct": -1.291348522904759
+        },
+        "9": {
+          "n": 171,
+          "edd": 188.0013029239766,
+          "patient": 187.65502456140348,
+          "pct": -0.18418934187554184
+        },
+        "10": {
+          "n": 200,
+          "edd": 93.761774,
+          "patient": 92.443346,
+          "pct": -1.4061466029855592
+        },
+        "12": {
+          "n": 200,
+          "edd": 955.608909,
+          "patient": 949.641552,
+          "pct": -0.6244559823374347
+        }
+      },
+      "declines": {
+        "mean_per_inst": 886.7824377457405,
+        "mean_wait_bh": 135.38407365661868,
+        "inst_with_idle_pct": 92.13630406290957,
+        "orders_ran_primary": 24310,
+        "orders_ran_secondary": 13501,
+        "pct_primary": 64.29345957525588
+      }
+    },
+    "full_m0.6": {
+      "n": 763,
+      "edd_mean": 329.5029449541284,
+      "patient_mean": 317.64492005242465,
+      "abs_change": -11.858024901703743,
+      "pct_change": -3.598761432421963,
+      "by_campus": {
+        "5": {
+          "n": 192,
+          "edd": 6.598020833333334,
+          "patient": 4.663927083333334,
+          "pct": -29.31324102871757
+        },
+        "9": {
+          "n": 171,
+          "edd": 192.05596257309944,
+          "patient": 188.11903625730994,
+          "pct": -2.049884972611063
+        },
+        "10": {
+          "n": 200,
+          "edd": 95.856518,
+          "patient": 92.371798,
+          "pct": -3.6353500760376005
+        },
+        "12": {
+          "n": 200,
+          "edd": 990.655269,
+          "patient": 954.124426,
+          "pct": -3.687543401134427
+        }
+      },
+      "declines": {
+        "mean_per_inst": 1226.6684141546527,
+        "mean_wait_bh": 288.8044745740494,
+        "inst_with_idle_pct": 97.50982961992136,
+        "orders_ran_primary": 24264,
+        "orders_ran_secondary": 22900,
+        "pct_primary": 51.44601814943601
+      }
+    },
+    "full_m0.8": {
+      "n": 763,
+      "edd_mean": 320.17723145478374,
+      "patient_mean": 315.8739058977719,
+      "abs_change": -4.303325557011817,
+      "pct_change": -1.344044839621753,
+      "by_campus": {
+        "5": {
+          "n": 192,
+          "edd": 5.166677083333334,
+          "patient": 4.551351041666668,
+          "pct": -11.909512279209103
+        },
+        "9": {
+          "n": 171,
+          "edd": 188.1451649122807,
+          "patient": 187.24348771929826,
+          "pct": -0.479245476971379
+        },
+        "10": {
+          "n": 200,
+          "edd": 93.84174599999999,
+          "patient": 92.335438,
+          "pct": -1.6051576874965543
+        },
+        "12": {
+          "n": 200,
+          "edd": 961.810266,
+          "patient": 948.2610340000001,
+          "pct": -1.4087219152222947
+        }
+      },
+      "declines": {
+        "mean_per_inst": 1044.2503276539974,
+        "mean_wait_bh": 231.53565806028826,
+        "inst_with_idle_pct": 91.34993446920052,
+        "orders_ran_primary": 17884,
+        "orders_ran_secondary": 17094,
+        "pct_primary": 51.12928126250786
+      }
+    }
+  },
+  "key_question_l0_vs_patient": {
+    "m0.6": {
+      "n": 763,
+      "l0_best": 325.0975726081258,
+      "l0_edd": 331.3168737876802,
+      "chain_edd": 324.852229095675,
+      "chain_patient": 318.887478768021,
+      "full_edd": 329.5029449541284,
+      "full_patient": 317.64492005242465,
+      "chain_edd_vs_l0best_pct": -0.07546765436681378,
+      "chain_patient_vs_l0best_pct": -1.9102246105019225,
+      "full_edd_vs_l0best_pct": 1.355092352938867,
+      "full_patient_vs_l0best_pct": -2.2924356204543592,
+      "patient_full_minus_chain": -1.242558715596374
+    },
+    "m0.8": {
+      "n": 763,
+      "l0_best": 316.9239260812582,
+      "l0_edd": 318.452128440367,
+      "chain_edd": 318.3586513761468,
+      "chain_patient": 316.3562885976409,
+      "full_edd": 320.17723145478374,
+      "full_patient": 315.8739058977719,
+      "chain_edd_vs_l0best_pct": 0.45270337037310004,
+      "chain_patient_vs_l0best_pct": -0.17910843483357614,
+      "full_edd_vs_l0best_pct": 1.0265256441040767,
+      "full_patient_vs_l0best_pct": -0.3313161604646511,
+      "patient_full_minus_chain": -0.4823826998689924
+    },
+    "pooled": {
+      "n": 1526,
+      "l0_best": 321.010749344692,
+      "chain_patient": 317.62188368283097,
+      "full_patient": 316.75941297509826,
+      "chain_patient_vs_l0best_pct": -1.0556860381713116,
+      "full_patient_vs_l0best_pct": -1.3243595045562693,
+      "chain_edd_vs_l0best_pct": 0.1852557562115507,
+      "full_edd_vs_l0best_pct": 1.192900508030114
+    }
+  },
+  "sanity": {
+    "n_rows": 6104,
+    "all_validator_ok": true,
+    "edd_rows_match_tier1_exact": true,
+    "max_abs_edd_twt_diff": 0.0
+  },
+  "meta": {
+    "experiment": "E-A patient EDD",
+    "eta": 0.8,
+    "comparator": "results/tier1 method=edd",
+    "n_configs": 3052,
+    "rule": "edd_patient",
+    "l0_baseline": "dedicated eta=1.0 (eta-invariant)"
+  }
+}

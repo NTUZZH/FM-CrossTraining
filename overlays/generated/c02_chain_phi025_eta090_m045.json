@@ -1,0 +1,144 @@
+{
+ "overlay_id": "c02_chain_phi025_eta090_m045",
+ "campus": 2,
+ "structure": "chain",
+ "phi": 0.25,
+ "eta": 0.9,
+ "crew_multiplier": 0.45,
+ "chain_order": [
+  "MISC",
+  "D30",
+  "D20",
+  "E10",
+  "D50",
+  "D40",
+  "C10"
+ ],
+ "budget_B": 7,
+ "headcount": 16,
+ "technicians": [
+  {
+   "id": "T0",
+   "primary": "C10",
+   "skills": [
+    "C10",
+    "MISC"
+   ]
+  },
+  {
+   "id": "T1",
+   "primary": "D20",
+   "skills": [
+    "D20",
+    "E10"
+   ]
+  },
+  {
+   "id": "T2",
+   "primary": "D20",
+   "skills": [
+    "D20"
+   ]
+  },
+  {
+   "id": "T3",
+   "primary": "D20",
+   "skills": [
+    "D20"
+   ]
+  },
+  {
+   "id": "T4",
+   "primary": "D30",
+   "skills": [
+    "D30",
+    "D20"
+   ]
+  },
+  {
+   "id": "T5",
+   "primary": "D30",
+   "skills": [
+    "D30"
+   ]
+  },
+  {
+   "id": "T6",
+   "primary": "D30",
+   "skills": [
+    "D30"
+   ]
+  },
+  {
+   "id": "T7",
+   "primary": "D30",
+   "skills": [
+    "D30"
+   ]
+  },
+  {
+   "id": "T8",
+   "primary": "D40",
+   "skills": [
+    "D40",
+    "C10"
+   ]
+  },
+  {
+   "id": "T9",
+   "primary": "D50",
+   "skills": [
+    "D50",
+    "D40"
+   ]
+  },
+  {
+   "id": "T10",
+   "primary": "E10",
+   "skills": [
+    "E10",
+    "D50"
+   ]
+  },
+  {
+   "id": "T11",
+   "primary": "E10",
+   "skills": [
+    "E10"
+   ]
+  },
+  {
+   "id": "T12",
+   "primary": "MISC",
+   "skills": [
+    "MISC",
+    "D30"
+   ]
+  },
+  {
+   "id": "T13",
+   "primary": "MISC",
+   "skills": [
+    "MISC"
+   ]
+  },
+  {
+   "id": "T14",
+   "primary": "MISC",
+   "skills": [
+    "MISC"
+   ]
+  },
+  {
+   "id": "T15",
+   "primary": "MISC",
+   "skills": [
+    "MISC"
+   ]
+  }
+ ],
+ "provenance": {
+  "crews": "[C] Y1 p95 calibration (capacity.csv)",
+  "skills": "[D] designed ladder, seed 20260707"
+ }
+}

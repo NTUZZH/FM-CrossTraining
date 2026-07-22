@@ -1,0 +1,44 @@
+{
+  "green": true,
+  "n_configs": 2289,
+  "n_failures": 0,
+  "failures_head": [],
+  "s3": {
+    "checked": 13734,
+    "missing": 0,
+    "max_rel": 2.2190626024091235e-16,
+    "mismatch": 0
+  },
+  "pooled_v2": {
+    "edd_m1.0": 315.52,
+    "edd_m0.8": 318.45,
+    "edd_m0.6": 331.32,
+    "wspt_m1.0": 317.54,
+    "wspt_m0.8": 321.7,
+    "wspt_m0.6": 335.54,
+    "atc_m1.0": 316.26,
+    "atc_m0.8": 318.95,
+    "atc_m0.6": 328.99,
+    "pfifo_m1.0": 315.52,
+    "pfifo_m0.8": 318.45,
+    "pfifo_m0.6": 331.32,
+    "mor_m1.0": 321.5,
+    "mor_m0.8": 336.35,
+    "mor_m0.6": 414.28,
+    "random_m1.0": 318.79,
+    "random_m0.8": 326.1,
+    "random_m0.6": 356.18
+  },
+  "pooled_random_natural_m1.0": 319.18,
+  "expected_default_anchors": {
+    "edd": 315.52,
+    "wspt": 317.54,
+    "atc": 316.26,
+    "pfifo": 315.52,
+    "mor": 321.5,
+    "random": 318.79
+  },
+  "elapsed_s": 14.5,
+  "y1_commit": "25ee06200af37cc2337083694d68564162c45ab9",
+  "seed": 301
+}

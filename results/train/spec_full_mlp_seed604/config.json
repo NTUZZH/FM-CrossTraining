@@ -1,0 +1,72 @@
+{
+  "seed": 604,
+  "updates": 1200,
+  "smoke": false,
+  "device": "cuda",
+  "arch": "mlp",
+  "wait": false,
+  "n_envs": 16,
+  "steps_per_env": 512,
+  "sizes": [
+    150,
+    400
+  ],
+  "campuses": [
+    5,
+    9,
+    10,
+    12
+  ],
+  "gamma": 1.0,
+  "gae_lambda": 0.98,
+  "clip": 0.2,
+  "epochs": 4,
+  "minibatch": 1024,
+  "ent_coef": 0.01,
+  "val_coef": 0.5,
+  "max_grad_norm": 0.5,
+  "lr": 0.0003,
+  "curriculum": {
+    "m": [
+      0.5,
+      0.6,
+      0.8,
+      1.0
+    ],
+    "structures": [
+      [
+        "full",
+        null
+      ]
+    ],
+    "eta": [
+      1.0,
+      0.8
+    ],
+    "track": "50/50 replay/generator",
+    "arrival_multiplier": 1.0
+  },
+  "dev": {
+    "primary": {
+      "structure": "chain",
+      "phi": 1.0,
+      "eta": 0.8,
+      "m": 0.6
+    },
+    "monitor_full": {
+      "structure": "full",
+      "phi": null,
+      "eta": 0.8,
+      "m": 0.6
+    },
+    "monitor_l0": {
+      "structure": "dedicated",
+      "phi": null,
+      "eta": 1.0,
+      "m": 1.0
+    },
+    "n_dev": 32,
+    "eval_every": 20
+  },
+  "n_replay_train_files": 760
+}

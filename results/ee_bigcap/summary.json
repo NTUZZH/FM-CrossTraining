@@ -1,0 +1,52 @@
+{
+  "largecap_full_penalized": {
+    "full_m60": {
+      "random": 341.27,
+      "best_rule": {
+        "name": "mor",
+        "twt": 325.75560602883354
+      },
+      "mlp": {
+        "twt_std": 354.7987042201835,
+        "twt_big": 354.6661275491481,
+        "delta": -0.1325766710353946,
+        "pct": -0.03736672920685732
+      },
+      "attn": {
+        "twt_std": 338.3421125294889,
+        "twt_big": 338.89868065530806,
+        "delta": 0.556568125819183,
+        "pct": 0.16449862586073266
+      }
+    },
+    "full_m80": {
+      "random": 327.21,
+      "best_rule": {
+        "name": "mor",
+        "twt": 318.502974836173
+      },
+      "mlp": {
+        "twt_std": 350.3001172739187,
+        "twt_big": 350.29981467889905,
+        "delta": -0.00030259501966156677,
+        "pct": -8.638164954565267e-05
+      },
+      "attn": {
+        "twt_std": 330.3554668152031,
+        "twt_big": 331.0687172477064,
+        "delta": 0.7132504325032869,
+        "pct": 0.21590392899484562
+      }
+    }
+  },
+  "sanity": {
+    "instrument_rows": 64092,
+    "instrument_infeasible": 0,
+    "instrument_twt_mismatch": 0,
+    "bigcap_rows": 61040,
+    "bigcap_infeasible": 0,
+    "bigcap_std_twt_mismatch": 0,
+    "instrument_configs": 3052,
+    "bigcap_configs": 1526
+  }
+}

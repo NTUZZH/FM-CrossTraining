@@ -1,0 +1,12 @@
+{
+  "family": "tier1",
+  "methods": [
+    "specs"
+  ],
+  "elapsed_s": 396.9324564933777,
+  "n_configs": 11445,
+  "n_run": 9156,
+  "n_errors": 0,
+  "rl_specs": [],
+  "finished": "2026-07-22 11:51:45"
+}
