@@ -1,7 +1,9 @@
-# FM-CrossTraining: a skill-overlay framework for counterfactual workforce design from CMMS work orders
+# FM-CrossTraining: computational framework and open benchmark for multiskill maintenance dispatching
 
 Framework code, benchmark overlays, methods, and results for the paper
-*"FM-CrossTraining: a skill-overlay framework for counterfactual workforce design from CMMS work orders"*.
+*"FM-CrossTraining: Computational Framework and Open Benchmark for Multiskill
+Maintenance Dispatching"* (submitted to the ASCE Journal of Computing in
+Civil Engineering).
 
 Cross-training is released as deterministic **resource overlays** on the
 instances of the open single-skill dispatching benchmark
@@ -16,7 +18,7 @@ figure and table in the paper.
 ## Layout
 
 - `overlays/` -- the flexibility-ladder generator, unit-tested;
-  `generate_all.py` materialises every released overlay bit-for-bit from the
+  `generate_all.py` materializes every released overlay bit-for-bit from the
   released crew calibration and a recorded seed.
 - `env/` -- pair-selection engine (`engine.py`), independent validator
   (`validator2.py`), admissible reward lower bound for overlapping skill
@@ -90,6 +92,6 @@ dataset is on Mendeley Data (DOI 10.17632/cb8d2nsjss.1, CC BY-NC 4.0); its
 SHA-256 is verified before use. Overlays are deterministic functions of the
 released crew calibration and are also shipped as files.
 
-## Licence
+## License
 
 CC BY-NC 4.0, inherited from FMUCD. Non-commercial.
