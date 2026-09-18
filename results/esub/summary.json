@@ -1,0 +1,210 @@
+{
+  "finished": "2026-09-19 04:14:59",
+  "elapsed_s": {
+    "decomp": 31.0,
+    "subset": 50.0
+  },
+  "n_instances": 763,
+  "y1_root": "y1_frozen_v10",
+  "corpus_fingerprint": "0aea54c2",
+  "decomp": {
+    "rows": 61040,
+    "cells": [
+      [
+        "dedicated",
+        null,
+        1.0,
+        0.8
+      ],
+      [
+        "dedicated",
+        null,
+        1.0,
+        0.6
+      ],
+      [
+        "chain",
+        1.0,
+        1.0,
+        0.8
+      ],
+      [
+        "chain",
+        1.0,
+        0.8,
+        0.8
+      ],
+      [
+        "chain",
+        1.0,
+        1.0,
+        0.6
+      ],
+      [
+        "chain",
+        1.0,
+        0.8,
+        0.6
+      ],
+      [
+        "full",
+        null,
+        1.0,
+        0.8
+      ],
+      [
+        "full",
+        null,
+        0.8,
+        0.8
+      ],
+      [
+        "full",
+        null,
+        1.0,
+        0.6
+      ],
+      [
+        "full",
+        null,
+        0.8,
+        0.6
+      ]
+    ],
+    "regression_compared": 61040,
+    "regression_mismatches": 0,
+    "drift_record": "notes/revision_r1/tier1_corpus_drift.json",
+    "max_class_sum_deviation": 2.7284841053187847e-12
+  },
+  "subset": {
+    "rows": 183000,
+    "infeasible": 0,
+    "cells": [
+      [
+        "dedicated",
+        null,
+        1.0,
+        1.0
+      ],
+      [
+        "dedicated",
+        null,
+        1.0,
+        0.8
+      ],
+      [
+        "dedicated",
+        null,
+        1.0,
+        0.6
+      ],
+      [
+        "chain",
+        1.0,
+        1.0,
+        1.0
+      ],
+      [
+        "chain",
+        1.0,
+        0.8,
+        1.0
+      ],
+      [
+        "chain",
+        1.0,
+        1.0,
+        0.8
+      ],
+      [
+        "chain",
+        1.0,
+        0.8,
+        0.8
+      ],
+      [
+        "chain",
+        1.0,
+        1.0,
+        0.6
+      ],
+      [
+        "chain",
+        1.0,
+        0.8,
+        0.6
+      ],
+      [
+        "full",
+        null,
+        1.0,
+        1.0
+      ],
+      [
+        "full",
+        null,
+        0.8,
+        1.0
+      ],
+      [
+        "full",
+        null,
+        1.0,
+        0.8
+      ],
+      [
+        "full",
+        null,
+        0.8,
+        0.8
+      ],
+      [
+        "full",
+        null,
+        1.0,
+        0.6
+      ],
+      [
+        "full",
+        null,
+        0.8,
+        0.6
+      ]
+    ],
+    "subsets": {
+      "cm": "cm_q095_train",
+      "le8": "le8_q095_train"
+    },
+    "instances": {
+      "cm": {
+        "n_instances": 762,
+        "n_orders": 107668,
+        "n_orders_base": 205050,
+        "min_orders": 1,
+        "dropped_empty": [
+          "c10_replay_150_0168"
+        ]
+      },
+      "le8": {
+        "n_instances": 763,
+        "n_orders": 186119,
+        "n_orders_base": 205200,
+        "min_orders": 104,
+        "dropped_empty": []
+      }
+    }
+  },
+  "rule_set": [
+    "edd",
+    "wspt",
+    "atc",
+    "pfifo",
+    "mor",
+    "lfj_atc",
+    "atc_eta",
+    "random"
+  ],
+  "rule_seed": 301,
+  "short_bh": 8.0,
+  "elapsed_note": "wall time of the cold sweep on ten worker processes; the pass that wrote this file resumed completed shards"
+}

@@ -21,6 +21,7 @@ from pathlib import Path
 
 import numpy as np
 import pytest
+import sys
 import torch
 
 from env.engine import F_TOTAL, PairDispatchEnv
@@ -28,8 +29,11 @@ from methods.policy2 import load_policy, make_policy
 from overlays.build import build_overlay, load_crews
 
 ROOT = Path(__file__).resolve().parents[1]
-Y1 = Path(os.environ.get("FMWOS_Y1_ROOT",
-                         ROOT.parent / "FM-Scheduling"))
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from experiments.y1_root import y1_root  # noqa: E402
+
+Y1 = y1_root()
 CAP = str(Y1 / "results/p1_calib/capacity.csv")
 INST_GLOB = str(Y1 / "data/processed/instances/c05/replay/150/*.json")
 RELEASED_CKPT = ROOT / "results/train/mlp_seed301/best.pt"

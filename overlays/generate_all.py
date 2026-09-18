@@ -20,8 +20,9 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from overlays.build import build_overlay, load_crews, save_overlay  # noqa
+from experiments.y1_root import y1_root                             # noqa
 
-Y1_ROOT = Path(os.environ.get("FMWOS_Y1_ROOT", ROOT.parent / "FM-Scheduling"))
+Y1_ROOT = y1_root()
 CAP = str(Y1_ROOT / "results/p1_calib/capacity.csv")
 OUT = ROOT / "overlays" / "generated"
 

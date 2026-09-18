@@ -1,0 +1,5 @@
+# Unpacked copy of the frozen benchmark inputs (instances_v10.tar.zst holds the tracked copy).
+data/y1_frozen_v10/data/
+data/y1_frozen_v10/results/
+__pycache__/
+*.pyc

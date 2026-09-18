@@ -1,0 +1,26 @@
+{
+  "y1_root": "y1_frozen_v10",
+  "dominant_sort": "stable",
+  "crew_differences": [],
+  "volume_differences": [
+    "(campus 2, trade D20) rows: rebuilt=np.int64(358) released=np.int64(357)",
+    "(campus 2, trade E10) rows: rebuilt=np.int64(449) released=np.int64(450)",
+    "(campus 9, trade B20) rows: rebuilt=np.int64(1231) released=np.int64(1232)",
+    "(campus 9, trade C10) rows: rebuilt=np.int64(4567) released=np.int64(4568)",
+    "(campus 9, trade C30) rows: rebuilt=np.int64(2193) released=np.int64(2202)",
+    "(campus 9, trade D20) rows: rebuilt=np.int64(14755) released=np.int64(14748)",
+    "(campus 9, trade D30) rows: rebuilt=np.int64(25379) released=np.int64(25375)",
+    "(campus 9, trade D40) rows: rebuilt=np.int64(5332) released=np.int64(5330)",
+    "(campus 9, trade E10) p95_weekly_hours: rebuilt=np.float64(213.11) released=np.float64(209.49)",
+    "(campus 9, trade E20) rows: rebuilt=np.int64(938) released=np.int64(940)",
+    "(campus 10, trade D40) p95_weekly_hours: rebuilt=np.float64(1937.51) released=np.float64(1945.01)",
+    "(campus 10, trade D40) rows: rebuilt=np.int64(9527) released=np.int64(9528)",
+    "(campus 10, trade MISC) p95_weekly_hours: rebuilt=np.float64(51.4) released=np.float64(46.97)",
+    "(campus 10, trade MISC) rows: rebuilt=np.int64(396) released=np.int64(395)"
+  ],
+  "chain_order_moved": [
+    10
+  ],
+  "vendored_differences": [],
+  "exact": false
+}

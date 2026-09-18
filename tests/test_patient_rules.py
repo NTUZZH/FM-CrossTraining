@@ -10,6 +10,7 @@ import os
 from pathlib import Path
 
 import pytest
+import sys
 
 from env.engine import PairDispatchEnv
 from methods.rules import (PATIENT_RULES, PatientEDD, _PatientRule,
@@ -17,8 +18,11 @@ from methods.rules import (PATIENT_RULES, PatientEDD, _PatientRule,
 from overlays.build import build_overlay, load_crews
 
 ROOT = Path(__file__).resolve().parents[1]
-Y1 = Path(os.environ.get("FMWOS_Y1_ROOT",
-                         ROOT.parent / "FM-Scheduling"))
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from experiments.y1_root import y1_root  # noqa: E402
+
+Y1 = y1_root()
 CAP = Y1 / "results/p1_calib/capacity.csv"
 INST = Y1 / "data/processed/instances"
 

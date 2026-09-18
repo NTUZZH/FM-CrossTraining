@@ -64,9 +64,12 @@ for _v in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS",
 import multiprocessing as mp
 
 ROOT = Path(__file__).resolve().parents[1]
-Y1 = Path(os.environ.get("FMWOS_Y1_ROOT", ROOT.parent / "FM-Scheduling"))
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "vendor"))
+
+from experiments.y1_root import y1_root              # noqa: E402
+
+Y1 = y1_root()
 
 from env.engine import PairDispatchEnv                       # noqa: E402
 from env.validator2 import validate as validate2            # noqa: E402

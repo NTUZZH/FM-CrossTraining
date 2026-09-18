@@ -25,8 +25,9 @@ sys.path.insert(0, str(ROOT))
 
 from overlays.build import load_crews, save_overlay, build_overlay  # noqa
 from overlays import topology_overlays as rt                        # noqa
+from experiments.y1_root import y1_root                             # noqa
 
-Y1 = Path(os.environ.get("FMWOS_Y1_ROOT", ROOT.parent / "FM-Scheduling"))
+Y1 = y1_root()
 CAP = str(Y1 / "results/p1_calib/capacity.csv")
 OUT = ROOT / "overlays" / "generated_overlays"
 

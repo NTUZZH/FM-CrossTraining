@@ -57,7 +57,11 @@ from methods.policy2 import make_policy
 from overlays.build import build_overlay, load_crews
 
 _REPO = Path(__file__).resolve().parents[1]
-Y1_ROOT = os.environ.get("FMWOS_Y1_ROOT", str(_REPO.parent / "FM-Scheduling"))
+if str(_REPO) not in sys.path:
+    sys.path.insert(0, str(_REPO))
+from experiments.y1_root import y1_root
+
+Y1_ROOT = str(y1_root())
 INST_ROOT = os.path.join(Y1_ROOT, "data", "processed", "instances")
 PARAM_ROOT = os.path.join(Y1_ROOT, "results", "p2_generator")
 CAPACITY = os.path.join(Y1_ROOT, "results", "p1_calib", "capacity.csv")

@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -30,6 +31,9 @@ import pandas as pd
 from scipy.stats import wilcoxon
 
 ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from experiments.y1_root import y1_root  # noqa: E402
 RES = ROOT / "results"
 
 import analysis.gates as G                                   # noqa: E402
@@ -161,7 +165,7 @@ def main():
     chk = json.load(open(RES / "e7_topology" / "sparse_config_check.json"))
     cap = os.environ.get(
         "FMWOS_Y1_CAP",
-        str(ROOT.parent / "FM-Scheduling/results/p1_calib/capacity.csv"))
+        str(y1_root() / "results/p1_calib/capacity.csv"))
     vols = {c: {r["trade"]: r["volume"] for r in load_crews(cap, c)}
             for c in CAMPUSES}
     desc = {}

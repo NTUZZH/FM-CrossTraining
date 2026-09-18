@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -23,9 +24,14 @@ from matplotlib.patches import (Rectangle, FancyArrowPatch,  # noqa: E402
                                 FancyBboxPatch)
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 RES = ROOT / "results"
 FIGDIR = ROOT / "paper" / "figures"
-Y1_ROOT = Path(os.environ.get("FMWOS_Y1_ROOT", ROOT.parent / "FM-Scheduling"))
+
+from experiments.y1_root import y1_root                 # noqa: E402
+
+Y1_ROOT = y1_root()
 
 # ---- Y1 design tokens (frozen) -------------------------------------------- #
 # INK and INK2 are the two text inks; both are pure black so every string in
@@ -73,7 +79,18 @@ def _rc():
         "font.family": "serif",
         "font.serif": ["Nimbus Roman", "Times New Roman", "Liberation Serif",
                        "STIXGeneral", "DejaVu Serif"],
-        "mathtext.fontset": "stix",
+        # Math glyphs (eta, varphi, subscripts) must carry the same Times
+        # face as the text, so the fontset is built from the text family
+        # instead of STIX. STIX stays only as the fallback for the few
+        # symbols Times lacks.
+        "mathtext.fontset": "custom",
+        "mathtext.rm": "Nimbus Roman",
+        "mathtext.it": "Nimbus Roman:italic",
+        "mathtext.bf": "Nimbus Roman:bold",
+        "mathtext.sf": "Nimbus Roman",
+        "mathtext.cal": "Nimbus Roman:italic",
+        "mathtext.tt": "Nimbus Roman",
+        "mathtext.fallback": "stix",
         "axes.edgecolor": AXIS, "axes.linewidth": 0.5,
         "axes.labelcolor": INK, "text.color": INK,
         "xtick.color": MUTE, "ytick.color": MUTE,
@@ -179,6 +196,69 @@ def _boot_ci(vals, n_boot=BOOT_N, seed=BOOT_SEED, alpha=0.05):
             float(np.percentile(means, 100 * (1 - alpha / 2))))
 
 
+# ---- Cluster-aware intervals (released convention) ------------------------ #
+# Configurations nest in base instances and base instances nest in campuses,
+# so a plain instance bootstrap treats correlated observations as
+# independent. The manuscript's headline intervals resample base instances
+# WITHIN campus (instance-cluster) and, as a coarser descriptive range,
+# whole campuses; Supplemental Text S5 and notes/supplementary/cluster_stats.py
+# record both. The base-instance key is the released instance id, which
+# already carries the campus, the track, and the size class.
+CLUSTER_BOOT_N = 10000
+
+
+def _campus_of(keys, field=0):
+    """Campus number of each key, read off the released instance id."""
+    out = []
+    for k in keys:
+        part = str(k).split("|")[field].split("_")[0]
+        out.append(int(part[1:]) if part[:1] == "c" else int(part))
+    return np.array(out, dtype=int)
+
+
+def _instance_series(sub, methods):
+    """Per-instance TWT for a winning method pool, keyed by configuration."""
+    import analysis.gates as G
+    w = sub[sub.method.isin(methods)]
+    if not len(w):
+        return None
+    w = w.copy()
+    w["cfg"] = G.config_key(w)
+    return w.groupby("cfg").twt.mean()
+
+
+def _cluster_cis(vals, campus, n_boot=CLUSTER_BOOT_N, seed=BOOT_SEED,
+                 alpha=0.05):
+    """Two percentile intervals of the mean, drawn exactly as the released
+    cluster bootstrap draws them.
+
+    The first resamples base instances with replacement within each campus.
+    The second resamples the campuses themselves and takes every instance of
+    each drawn campus, which four campuses make a descriptive range rather
+    than a calibrated interval.
+    """
+    if vals is None or len(vals) == 0:
+        return None, None
+    vals = np.asarray(vals, dtype=float)
+    campus = np.asarray(campus)
+    campuses = np.unique(campus)
+    by_c = {c: np.flatnonzero(campus == c) for c in campuses}
+    rng = np.random.default_rng(seed)
+    inst_means = np.empty(n_boot, dtype=float)
+    camp_means = np.empty(n_boot, dtype=float)
+    for b in range(n_boot):
+        parts = [rng.choice(by_c[c], size=len(by_c[c]), replace=True)
+                 for c in campuses]
+        inst_means[b] = vals[np.concatenate(parts)].mean()
+        drawn = rng.choice(campuses, size=len(campuses), replace=True)
+        camp_means[b] = vals[np.concatenate([by_c[c] for c in drawn])].mean()
+    lo, hi = 100 * alpha / 2, 100 * (1 - alpha / 2)
+    return ((float(np.percentile(inst_means, lo)),
+             float(np.percentile(inst_means, hi))),
+            (float(np.percentile(camp_means, lo)),
+             float(np.percentile(camp_means, hi))))
+
+
 # Per-structure line/marker styling so the series stay distinguishable in
 # grayscale legibility, not only by colour.
 STRUCT_LINE = {"dedicated": ":", "chain": "-", "full": "--",
@@ -260,11 +340,17 @@ def fig1_pipeline():
         tracked.append(artist)
         return artist
 
-    # ---- panel frames: one BLACK hairline box per column ---------------- #
+    # ---- panel frames: one BLACK hairline box per column, each stage on
+    # its own very light background tint so the four steps read apart
+    # (pastel fills only, per the house palette; text stays pure black) --- #
+    STAGE_BG = ["#eef4fb",   # 1 replayed work orders: light blue
+                "#f4f1fb",   # 2 overlays/structures: light lavender (indigo kin)
+                "#f5f5f2",   # 3 evaluation protocol: light warm grey
+                "#fdf6e7"]   # 4 verdicts: light amber
     for i in range(4):
         track(Rectangle((cx[i] - PADX, BOX_B), CW + 2 * PADX,
-                        BOX_T - BOX_B, facecolor="none", edgecolor=INK,
-                        linewidth=LW_HAIR, zorder=2))
+                        BOX_T - BOX_B, facecolor=STAGE_BG[i], edgecolor=INK,
+                        linewidth=LW_HAIR, zorder=1.5))
 
     # ---- header band: two-line Title-Case headers, centred over a rule -- #
     HEADS = ["Replayed\nWork Orders",
@@ -373,7 +459,7 @@ def fig1_pipeline():
             ax.scatter([mx + gx * R], [my + gy * R],
                        s=7.0 + 30.0 * csize[g] / smax, color=NODE,
                        edgecolor="white", linewidth=0.4, zorder=4)
-        ctext(1, mx, my - R - 1.6, "%s $\\cdot$ $B = %d$"
+        ctext(1, mx, my - R - 1.6, "%s \u00b7 $B = %d$"
               % (name, ov["budget_B"]), fontsize=MICRO, va="top")
     ctext(1, mid4[1], F_T, "Node = trade,\nsize $\\propto$ crew;\narc = "
           "secondary skill.\nSwept: structure $\\Lambda$,\nadoption "
@@ -478,15 +564,15 @@ def fig1_pipeline():
         track(Rectangle((mid - 6.9 + k * 4.8, yb), 3.4, 9.4 * rv,
                         facecolor=bc, edgecolor="none", zorder=4))
     mini_row(yr, "Transfer Stress Test",
-             "up to 32% lower TWT\non a held-out campus")
+             "up to 32% lower TWT\non an under-provisioned\nheld-out campus")
 
     # ---- the two pre-committed gates, centred, verdicts bold ------------ #
     # Short gate names as in Section 6 ("chaining test", "prediction
     # test"); the caption expands both.
-    ctext(3, mid, F_T, "Gate C $\\cdot$ Chaining", fontsize=BODY, va="top")
+    ctext(3, mid, F_T, "Gate C \u00b7 Chaining", fontsize=BODY, va="top")
     ctext(3, mid, F_T - 4.2, "PASSED", fontsize=HEAD, va="top",
           fontweight="bold")
-    ctext(3, mid, F_T - 9.8, "Gate P $\\cdot$ Prediction", fontsize=BODY,
+    ctext(3, mid, F_T - 9.8, "Gate P \u00b7 Prediction", fontsize=BODY,
           va="top")
     ctext(3, mid, F_T - 14.0, "NOT SUPPORTED", fontsize=HEAD, va="top",
           fontweight="bold")
@@ -496,7 +582,7 @@ def fig1_pipeline():
             color=INK, linewidth=LW_RULE, zorder=4)
     otext(W / 2.0, 3.6, "two frames: fixed headcount (design), matched "
           "offered load (decision)", fontsize=FOOT, ha="center", va="top")
-    otext(W / 2.0, -1.0, "gates dated before any verdict run $\\cdot$ L0 "
+    otext(W / 2.0, -1.0, "gates dated before any verdict run \u00b7 L0 "
           "reproduces the single-skill results bitwise", fontsize=FOOT,
           ha="center", va="top")
 
@@ -681,8 +767,9 @@ def fig3_design_curve():
                 v, name = G.twt_best(sub, pools)
                 if v is not None:
                     pts[(st, phi)] = (b, v)
-                    cis[(st, phi)] = _boot_ci(
-                        _instance_values(sub, pools[name]))
+                    s = _instance_series(sub, pools[name])
+                    cis[(st, phi)] = _cluster_cis(
+                        s.to_numpy(), _campus_of(s.index))[0]
 
             chain_keys = sorted((k for k in pts
                                  if k[0] in ("dedicated", "chain")),
@@ -768,6 +855,8 @@ def fig3_design_curve():
             fam = edd[(edd.m == m) & (edd.eta == eta)]
             l0 = fam[fam.structure == "dedicated"].set_index("base").twt
             xs_, ys_, lo_, hi_ = [], [], [], []
+            xc_, clo_, chi_ = [], [], []
+            side = -1.0 if eta == 1.0 else 1.0
             for k, (st, phi, lab) in enumerate(cats):
                 sub = fam[fam.structure == st]
                 if phi is not None:
@@ -777,22 +866,35 @@ def fig3_design_curve():
                 d = (l0 - sub.set_index("base").twt).dropna()
                 if not len(d):
                     continue
-                lo, hi = _boot_ci(d.to_numpy())
-                xs_.append(k + (-0.13 if eta == 1.0 else 0.13))
+                inst, camp = _cluster_cis(d.to_numpy(), _campus_of(d.index))
+                lo, hi = inst
+                xs_.append(k + side * 0.13)
                 ys_.append(float(d.mean()))
                 lo_.append(lo)
                 hi_.append(hi)
+                # The whole-campus range rides beside its estimate, not on
+                # top of it: with four campuses it is sometimes narrower
+                # than the instance-cluster interval and would otherwise
+                # disappear behind it.
+                xc_.append(k + side * 0.195)
+                clo_.append(camp[0])
+                chi_.append(camp[1])
             col = STRUCT_COLOR["chain"] if m == 0.6 else AXIS
             kwm = dict(color=col, markersize=3.4,
                        mfc=(col if fill else SURF), mec=col, mew=0.7)
+            axp.errorbar(xc_, 0.5 * (np.array(clo_) + np.array(chi_)),
+                         yerr=[0.5 * (np.array(chi_) - np.array(clo_)),
+                               0.5 * (np.array(chi_) - np.array(clo_))],
+                         fmt="none", ecolor=col, elinewidth=0.4,
+                         capsize=1.0, capthick=0.4, alpha=0.55, zorder=2)
             axp.errorbar(xs_, ys_,
                          yerr=[np.array(ys_) - np.array(lo_),
                                np.array(hi_) - np.array(ys_)],
                          fmt=mk, elinewidth=0.7, capsize=1.6,
-                         capthick=0.7, linestyle="none", **kwm)
+                         capthick=0.7, linestyle="none", zorder=3, **kwm)
         axp.set_xticks(range(len(cats)))
         axp.set_xticklabels([lab for _s, _p, lab in cats])
-        axp.set_xlim(-0.6, len(cats) - 0.4)
+        axp.set_xlim(-0.65, len(cats) - 0.35)
         axp.set_title("Paired Dividend vs L0, $m=%.1f$ (Fixed EDD)" % m,
                       fontsize=8.6, loc="center", pad=8.0)
         if i == 0:
@@ -802,6 +904,11 @@ def fig3_design_curve():
                Line2D([], [], marker="s", linestyle="none", color=INK,
                       mfc=SURF, mew=0.7, markersize=3.4,
                       label="$\\eta=0.8$")]
+        # The companion bars of the first category reach into the corner
+        # the legend used to sit in, so the panel gets headroom above the
+        # data and the legend sits in it.
+        _lo, _hi = axp.get_ylim()
+        axp.set_ylim(_lo, _lo + (_hi - _lo) * 1.34)
         axp.legend(handles=hnd, frameon=False, fontsize=7.0,
                    loc="upper left", handletextpad=0.3)
 
@@ -820,8 +927,10 @@ def fig3_design_curve():
                loc="lower center", bbox_to_anchor=(0.5, 0.005),
                handletextpad=0.5, columnspacing=1.8)
     fig.text(0.5, 0.985,
-             "n = 763 instances per point, pooled over 4 campuses;\n"
-             "bars are 95% instance-bootstrap CIs (2000 resamples).",
+             "n = 763 instances per point, pooled over 4 campuses; bars are "
+             "95% cluster-bootstrap intervals over base instances\n"
+             "within campus (10,000 resamples); the thin companion bars of "
+             "the bottom row resample whole campuses.",
              ha="center", va="top", fontsize=8.6, color=INK)
     _save(fig, "fig3_design_curve")
 
@@ -871,7 +980,7 @@ def fig6_frameu():
         # above any symlog threshold, so real values read cleanly.
         ax.yaxis.set_major_locator(mticker.MaxNLocator(nbins=6,
                                                         steps=[1, 2, 5, 10]))
-        ax.set_xlabel("offered-load utilisation $U$")
+        ax.set_xlabel("offered-load utilization $U$")
         ax.set_title("$\\eta=%.1f$" % eta, fontsize=8.6)
     axes[0].set_ylabel("best-method TWT (weighted units)")
     axes[0].legend(frameon=False, loc="upper left")

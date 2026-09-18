@@ -34,6 +34,7 @@ from __future__ import annotations
 import csv
 import json
 import os
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -41,8 +42,11 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
 RES = ROOT / "results"
-Y1 = Path(os.environ.get("FMWOS_Y1_ROOT",
-                         ROOT.parent / "FM-Scheduling"))
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from experiments.y1_root import y1_root  # noqa: E402
+
+Y1 = y1_root()
 CAP = Y1 / "results/p1_calib/capacity.csv"
 INST_ROOT = Y1 / "data/processed/instances"
 

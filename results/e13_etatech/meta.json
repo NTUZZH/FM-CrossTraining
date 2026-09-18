@@ -1,0 +1,44 @@
+{
+ "family": "e13_etatech",
+ "note": "per-technician secondary-skill efficiency; post-hoc sensitivity, not merged into tier1",
+ "distributions": {
+  "u60": [
+   0.6,
+   1.0
+  ],
+  "u80": [
+   0.8,
+   1.0
+  ]
+ },
+ "draw_seeds": [
+  20260901,
+  20260902,
+  20260903
+ ],
+ "structures": [
+  "chain",
+  "generalist",
+  "full"
+ ],
+ "crew_multipliers": [
+  0.6,
+  0.8
+ ],
+ "methods": [
+  "edd",
+  "wspt",
+  "atc",
+  "pfifo",
+  "mor",
+  "lfj_atc",
+  "atc_eta",
+  "random"
+ ],
+ "rule_seed": 301,
+ "n_instances": 763,
+ "n_rows": 219744,
+ "y1_corpus": "frozen v1.0",
+ "elapsed_s": 178.71977376937866,
+ "workers": 6
+}

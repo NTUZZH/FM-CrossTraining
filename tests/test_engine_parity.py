@@ -22,7 +22,11 @@ from env.engine import PairDispatchEnv
 from methods.rules import get_selector
 
 _REPO = Path(__file__).resolve().parents[1]
-Y1_ROOT = Path(os.environ.get("FMWOS_Y1_ROOT", _REPO.parent / "FM-Scheduling"))
+if str(_REPO) not in sys.path:
+    sys.path.insert(0, str(_REPO))
+from experiments.y1_root import y1_root  # noqa: E402
+
+Y1_ROOT = y1_root()
 INST_GLOB = str(Y1_ROOT / "data/processed/instances/c*/replay/*/*.json")
 DET_RULES = ["edd", "wspt", "atc", "pfifo", "mor"]
 

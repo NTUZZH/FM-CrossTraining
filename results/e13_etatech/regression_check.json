@@ -1,0 +1,17 @@
+{
+ "constant_eta": 0.8,
+ "n_instances": 763,
+ "y1_corpus": "frozen v1.0",
+ "baseline": {
+  "rows_compared": 36624,
+  "mismatches": 0,
+  "missing": 0,
+  "detail": []
+ },
+ "released": {
+  "rows_compared": 30520,
+  "mismatches": 0,
+  "missing": 0,
+  "detail": []
+ }
+}

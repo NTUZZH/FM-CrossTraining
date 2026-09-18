@@ -181,7 +181,7 @@ def main():
             "secondary-skill slowdown, where it is the robust wiring."
             % rho06s)
         n["findings-preview-sentence-two"] = (
-            "On the prediction side, the pre-specified gate does not pass: "
+            "On the prediction side, the prediction gate does not pass: "
             "even with genuine assignment flexibility the ranked priority "
             "rules remain unbeaten under the shared non-delay protocol "
             "(EDD leads, %.1f\\%% pooled gap), and this outcome against "
@@ -200,7 +200,7 @@ def main():
             "taxes exactly the secondary-speed assignments a greedy learner "
             "is tempted to make. The nearest extension, a wait-permitting "
             "action space, has since been trained and reported "
-            "(Section~\\ref{sec:patient}): it fails every declared "
+            "(the Deliberate Idling section): it fails every declared "
             "comparison, which strengthens this mechanism reading, since "
             "handing the learner the one decision the rules cannot make "
             "did not help it; the next levers in the declared ladder are "
@@ -226,16 +226,16 @@ def main():
     n["conclusion-answer-two"] = (
         "Whether assignment flexibility is where learned dispatching starts "
         "to pay: %s" % (
-            "yes, under the pre-specified gate." if branch == "A"
-            else "not yet at this lever's range, under the pre-specified "
+            "yes, under the declared gate." if branch == "A"
+            else "not yet at this lever's range, under the declared "
             "gate and the shared non-delay protocol, reported in full; "
-            "a wait-capable variant of the same class, added under a "
-            "dated amendment, does not change the verdict."))
+            "a wait-capable variant of the same class, added as a "
+            "protocol amendment, does not change the verdict."))
     n["gatep-detail-paragraph"] = (
         "The policy's pooled seed-mean TWT is %.2f in the pooled scope, "
         "%.2f at $m{=}0.8$, and %.2f at $m{=}0.6$, each %s the best ranked "
         "rule %s; the per-seed spread and the Holm-adjusted p-values are in "
-        "Table~\\ref{tab:pvalues} and the released tables." % (
+        "Table~S4 and the released tables." % (
             pol_mean,
             gp["m08"]["policy_pooled_mean"],
             gp["m06"]["policy_pooled_mean"],
@@ -269,7 +269,7 @@ def main():
     half_share = ("about %d\\%%" % round((rho06 or 0.87) * phi50)
                   if rho06 else "most")
     n["discussion-ops-paragraph-one"] = (
-        "For a facility organisation the map reads as an equipment-free "
+        "For a facility organization the map reads as an equipment-free "
         "capacity decision. Where crews are contended and secondary work is "
         "not slower, one secondary skill per technician with every trade "
         "covered "
@@ -293,8 +293,8 @@ def main():
     none_clause = (
         "even at $m{=}0.8$, where contention is episodic rather than "
         "sustained, the full-flexibility dividend is immaterial "
-        "(%.1f\\%% of the dedicated baseline, below the pre-specified "
-        "guard), " % m08_pct if m08_pct is not None else "")
+        "(%.1f\\%% of the dedicated baseline, below the guard "
+        "threshold), " % m08_pct if m08_pct is not None else "")
     c2_full = nb.get("transfer-c2-reduction-full", "up to a third")
     c2_chain = nb.get("transfer-c2-reduction-chain", "most of that")
     n["discussion-ops-paragraph-two"] = (
@@ -308,14 +308,14 @@ def main():
         "and demand non-stationarity rather than as a routine upgrade. In "
         "that deep-overload regime full flexibility retains a residual "
         "margin over the chain, so stopping at the chain there is a "
-        "cost-benefit judgement rather than dominance." % (
+        "cost-benefit judgment rather than dominance." % (
             none_clause, c2_full, c2_chain))
     n["frameu-paragraph"] = (
         "At matched offered load the structures separate mainly through the "
         "efficiency penalty rather than through added capacity: at "
         "$\\eta = 1$ the curves nearly coincide, while at $\\eta = 0.8$ full "
-        "flexibility carries the penalty and the chain sits between, "
-        "isolating the decision effect from the capacity effect.")
+        "flexibility carries the penalty and the chain sits between, with the "
+        "comparison holding headcount and gross workload fixed throughout.")
     n["rolling-paragraph"] = (
         "Rolling CP-SAT reaches parity with the rules on its eight-instance "
         "subsample where snapshots solve to optimality, and inherits the "

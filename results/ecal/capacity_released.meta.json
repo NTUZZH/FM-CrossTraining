@@ -1,0 +1,10 @@
+{
+  "generator": "experiments/recalibrate.py",
+  "label": "released",
+  "quantile": 0.95,
+  "window": "train",
+  "row_filter": "none",
+  "note": "column p95_weekly_hours holds the quantile of weekly summed labor hours at this quantile",
+  "trades": 68,
+  "headcount": 687
+}

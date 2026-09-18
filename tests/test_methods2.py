@@ -6,6 +6,7 @@ import glob
 import json
 import os
 import random
+import sys
 from pathlib import Path
 
 from fmwos_y1 import cpsat as cpsat_y1
@@ -17,7 +18,11 @@ from methods.rules import get_selector
 from overlays.build import build_overlay, load_crews
 
 _REPO = Path(__file__).resolve().parents[1]
-Y1_ROOT = Path(os.environ.get("FMWOS_Y1_ROOT", _REPO.parent / "FM-Scheduling"))
+if str(_REPO) not in sys.path:
+    sys.path.insert(0, str(_REPO))
+from experiments.y1_root import y1_root  # noqa: E402
+
+Y1_ROOT = y1_root()
 CAP = str(Y1_ROOT / "results/p1_calib/capacity.csv")
 
 
