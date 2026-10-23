@@ -459,7 +459,7 @@ def fig1_pipeline():
             ax.scatter([mx + gx * R], [my + gy * R],
                        s=7.0 + 30.0 * csize[g] / smax, color=NODE,
                        edgecolor="white", linewidth=0.4, zorder=4)
-        ctext(1, mx, my - R - 1.6, "%s \u00b7 $B = %d$"
+        ctext(1, mx, my - R - 1.6, "%s, $B = %d$"
               % (name, ov["budget_B"]), fontsize=MICRO, va="top")
     ctext(1, mid4[1], F_T, "Node = trade,\nsize $\\propto$ crew;\narc = "
           "secondary skill.\nSwept: structure $\\Lambda$,\nadoption "
@@ -569,10 +569,10 @@ def fig1_pipeline():
     # ---- the two pre-committed gates, centred, verdicts bold ------------ #
     # Short gate names as in Section 6 ("chaining test", "prediction
     # test"); the caption expands both.
-    ctext(3, mid, F_T, "Gate C \u00b7 Chaining", fontsize=BODY, va="top")
+    ctext(3, mid, F_T, "Gate C, chaining test", fontsize=BODY, va="top")
     ctext(3, mid, F_T - 4.2, "PASSED", fontsize=HEAD, va="top",
           fontweight="bold")
-    ctext(3, mid, F_T - 9.8, "Gate P \u00b7 Prediction", fontsize=BODY,
+    ctext(3, mid, F_T - 9.8, "Gate P, prediction test", fontsize=BODY,
           va="top")
     ctext(3, mid, F_T - 14.0, "NOT SUPPORTED", fontsize=HEAD, va="top",
           fontweight="bold")
@@ -580,10 +580,10 @@ def fig1_pipeline():
     # ---- footer rule + two centred lines at manuscript body size -------- #
     ax.plot([cx[0] - PADX, cx[3] + CW + PADX], [Y_FOOT_RULE, Y_FOOT_RULE],
             color=INK, linewidth=LW_RULE, zorder=4)
-    otext(W / 2.0, 3.6, "two frames: fixed headcount (design), matched "
-          "offered load (decision)", fontsize=FOOT, ha="center", va="top")
-    otext(W / 2.0, -1.0, "gates dated before any verdict run \u00b7 L0 "
-          "reproduces the single-skill results bitwise", fontsize=FOOT,
+    otext(W / 2.0, 3.6, "two frames: fixed headcount (design) and matched "
+          "aggregate load (decision)", fontsize=FOOT, ha="center", va="top")
+    otext(W / 2.0, -1.0, "gates dated before any verdict run, and L0 "
+          "reproduces the single-skill results exactly", fontsize=FOOT,
           ha="center", va="top")
 
     # ---- assertions ----------------------------------------------------- #
@@ -716,40 +716,43 @@ def fig3_design_curve():
     from overlays.build import build_overlay, load_crews
     cap = str(Y1_ROOT / "results/p1_calib/capacity.csv")
 
-    def budget(structure, phi):
+    def budget(structure, phi, m):
+        # Realized memberships of the roster at crew multiplier m (Table S9).
         tot = 0
         for c in (5, 9, 10, 12):
             ov = build_overlay(cap and c, load_crews(cap, c), structure,
-                               phi, 1.0, 1.0)
+                               phi, 1.0, m)
             tot += ov["budget_B"]
         return tot
 
-    xs = {("dedicated", None): 0,
-          ("chain", 0.25): budget("chain", 0.25),
-          ("chain", 0.5): budget("chain", 0.5),
-          ("chain", 1.0): budget("chain", 1.0),
-          ("generalist", None): budget("generalist", None),
-          ("full", None): budget("full", None)}
+    def budget_axis(m):
+        return {("dedicated", None): 0,
+                ("chain", 0.25): budget("chain", 0.25, m),
+                ("chain", 0.5): budget("chain", 0.5, m),
+                ("chain", 1.0): budget("chain", 1.0, m),
+                ("generalist", None): budget("generalist", None, m),
+                ("full", None): budget("full", None, m)}
 
     import analysis.gates as G
     from matplotlib.lines import Line2D
 
-    b_full = xs[("full", None)]
-    b_chain1 = xs[("chain", 1.0)]
     # The budget axis is broken: every cheap structure lives below ~1.1x the
     # complete chain's budget, while FULL sits an order of magnitude out. A
     # single linear axis would leave 90 per cent of the panel empty, so the
     # far point gets its own narrow segment with break marks.
-    x_lo_hi = b_chain1 * 1.18
-    x_hi_lo, x_hi_hi = b_full * 0.985, b_full * 1.015
 
-    fig = plt.figure(figsize=figsize(165, 156))
+    fig = plt.figure(figsize=figsize(165, 146))
     gs = fig.add_gridspec(3, 4, width_ratios=[7, 1.5, 7, 1.5],
                           height_ratios=[10, 10, 8.0],
                           wspace=0.10, hspace=0.92,
-                          left=0.085, right=0.985, top=0.865, bottom=0.135)
+                          left=0.085, right=0.985, top=0.945, bottom=0.145)
 
     for i, m in enumerate((0.8, 0.6)):
+        xs = budget_axis(m)
+        b_full = xs[("full", None)]
+        b_chain1 = xs[("chain", 1.0)]
+        x_lo_hi = b_chain1 * 1.18
+        x_hi_lo, x_hi_hi = b_full * 0.985, b_full * 1.015
         for j, eta in enumerate((1.0, 0.8)):
             axl = fig.add_subplot(gs[j, 2 * i])
             axr = fig.add_subplot(gs[j, 2 * i + 1], sharey=axl)
@@ -833,7 +836,9 @@ def fig3_design_curve():
             if i == 0:
                 axl.set_ylabel("pooled TWT (weighted units)")
             if m == 0.8:
-                axl.text(0.03, 0.06, "no material dividend (2% guard)",
+                # Starts right of the B = 0 error bar so the text never
+                # crosses its lower cap.
+                axl.text(0.085, 0.06, "below the 2% evaluability threshold",
                          transform=axl.transAxes, fontsize=6.8, color=INK)
 
     # ---- paired-effect row: per-instance dividend vs L0, fixed EDD ------ #
@@ -926,71 +931,116 @@ def fig3_design_curve():
     fig.legend(handles=handles, frameon=False, ncol=4, fontsize=7.6,
                loc="lower center", bbox_to_anchor=(0.5, 0.005),
                handletextpad=0.5, columnspacing=1.8)
-    fig.text(0.5, 0.985,
-             "n = 763 instances per point, pooled over 4 campuses; bars are "
-             "95% cluster-bootstrap intervals over base instances\n"
-             "within campus (10,000 resamples); the thin companion bars of "
-             "the bottom row resample whole campuses.",
-             ha="center", va="top", fontsize=8.6, color=INK)
+    # The caption carries the sample size and the interval scheme.
     _save(fig, "fig3_design_curve")
 
 
 def fig6_frameu():
+    """Frame U: best observed TWT per structure against offered load U.
+
+    Each point is the pooled mean, over the 120 instances of one (U, eta)
+    cell (30 per campus x 4 campuses), of the best observed method among the
+    seven ranked rules and the pair-MLP policy pool (per-instance seed-mean).
+    Ribbons are 95% percentile intervals from 10,000 resamples of instances
+    drawn with replacement within campus; the best method is re-selected in
+    every resample. Returns the plotted points and interval bounds.
+    """
     _rc()
     e3 = _read("e3")
     if e3 is None:
-        return
+        return None
     df = _expand_l0(e3)
-    mlp, attn = _policy_pools(e3)
+    mlp, _attn = _policy_pools(e3)
     import analysis.gates as G
     import matplotlib.ticker as mticker
-    fig, axes = plt.subplots(1, 2, figsize=figsize(165, 90), sharey=True)
-    for ax, eta in zip(axes, (1.0, 0.8)):
+    pools = {r: [r] for r in
+             ["edd", "wspt", "atc", "pfifo", "mor", "lfj_atc", "atc_eta"]}
+    if mlp:
+        pools["policy_mlp"] = mlp
+    names = list(pools)
+
+    def weights(master):
+        # Resample counts, instances drawn within campus (campuses in
+        # ascending order), one Generator seeded once per U.
+        campus = _campus_of(master)
+        rng = np.random.default_rng(BOOT_SEED)
+        W = np.zeros((CLUSTER_BOOT_N, len(master)))
+        for c in sorted(set(campus.tolist())):
+            idx = np.flatnonzero(campus == c)
+            k = len(idx)
+            draw = rng.integers(0, k, size=(CLUSTER_BOOT_N, k))
+            flat = (np.arange(CLUSTER_BOOT_N)[:, None] * k + draw).ravel()
+            W[:, idx] += np.bincount(
+                flat, minlength=CLUSTER_BOOT_N * k).reshape(CLUSTER_BOOT_N, k)
+        return W
+
+    def matrix(cell, master):
+        M = np.full((len(master), len(names)), np.nan)
+        for j, name in enumerate(names):
+            s = _instance_series(cell, pools[name])
+            s.index = [k.split("|")[0] for k in s.index]
+            M[:, j] = s.reindex(master).to_numpy(float)
+        return M
+
+    us_all = sorted(df.u_target.dropna().unique())
+    Ws = {}
+    for u in us_all:
+        master = sorted(df[(df.u_target == u)
+                           & (df.structure == "dedicated")
+                           & (df.eta == 1.0)].instance_id.unique())
+        Ws[u] = (master, weights(master))
+
+    out = {}
+    fig, axes = plt.subplots(1, 2, figsize=figsize(165, 80), sharey=True)
+    for k, (ax, eta) in enumerate(zip(axes, (1.0, 0.8))):
         style_ax(ax)
         fam = df[df.eta == eta]
         for st in ("dedicated", "chain", "full"):
             sub = fam[fam.structure == st]
             us, ys, los, his = [], [], [], []
-            for u in sorted(sub.u_target.dropna().unique()):
+            for u in us_all:
                 cell = sub[sub.u_target == u]
-                pools = {r: [r] for r in
-                         ["edd", "wspt", "atc", "pfifo", "mor", "lfj_atc",
-                          "atc_eta"]}
-                if mlp:
-                    pools["policy_mlp"] = mlp
                 v, name = G.twt_best(cell, pools)
                 if v is None:
                     continue
-                ci = _boot_ci(_instance_values(cell, pools[name]))
+                master, W = Ws[u]
+                M = matrix(cell, master)
+                assert np.isfinite(M).all()
+                assert abs(np.nanmin(M.mean(axis=0)) - v) < 1e-9
+                best_b = ((W @ M) / W.sum(axis=1, keepdims=True)).min(axis=1)
+                lo, hi = np.percentile(best_b, [2.5, 97.5])
                 us.append(u)
                 ys.append(v)
-                los.append(ci[0])
-                his.append(ci[1])
+                los.append(float(lo))
+                his.append(float(hi))
+                out[(eta, st, float(u))] = (v, name, float(lo), float(hi))
             if not us:
                 continue
             col = STRUCT_COLOR[st]
-            # 95% instance-bootstrap CI ribbon (light; 120 instances per point,
-            # 30 per campus over the four campuses).
             ax.fill_between(us, los, his, color=col, alpha=0.13, linewidth=0,
                             zorder=1)
             ax.plot(us, ys, color=col, linestyle=STRUCT_LINE[st],
                     marker=STRUCT_MARKER[st], linewidth=1.0, markersize=2.8,
-                    mec=SURF, mew=0.3, label=STRUCT_PRETTY[st], zorder=3)
+                    mec=SURF, mew=0.3, zorder=3,
+                    label={"dedicated": "Dedicated (L0)",
+                           "chain": "CHAIN(1.0)", "full": "FULL"}[st])
         # A plain linear axis with round-number ticks: every cell here sits far
         # above any symlog threshold, so real values read cleanly.
         ax.yaxis.set_major_locator(mticker.MaxNLocator(nbins=6,
                                                         steps=[1, 2, 5, 10]))
-        ax.set_xlabel("offered-load utilization $U$")
-        ax.set_title("$\\eta=%.1f$" % eta, fontsize=8.6)
-    axes[0].set_ylabel("best-method TWT (weighted units)")
-    axes[0].legend(frameon=False, loc="upper left")
-    fig.subplots_adjust(bottom=0.28)
-    fig.text(0.5, 0.02,
-             "n = 120 instances per point (30 per campus $\\times$ 4 "
-             "campuses);\nribbons are 95% instance-bootstrap CIs "
-             "(2000 resamples).",
-             ha="center", va="bottom", fontsize=8.0, color=INK)
+        ax.yaxis.set_major_formatter(mticker.StrMethodFormatter("{x:,.0f}"))
+        ax.set_xticks(us_all)
+        ax.set_xlabel("Offered-load utilization $U$")
+        ax.set_title("(%s) $\\eta = %.1f$" % ("ab"[k], eta), fontsize=8.6)
+    axes[0].set_ylabel("Best observed TWT (weighted units)")
+    leg = axes[0].legend(loc="upper left", frameon=True, fancybox=False,
+                         framealpha=1.0, borderpad=0.5, handlelength=2.4)
+    leg.get_frame().set_edgecolor(INK)
+    leg.get_frame().set_linewidth(0.5)
+    leg.get_frame().set_facecolor(SURF)
+    fig.subplots_adjust(wspace=0.12)
     _save(fig, "fig6_frameu")
+    return out
 
 
 def fig8_training():

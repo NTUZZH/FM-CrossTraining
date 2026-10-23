@@ -5,7 +5,7 @@ ratio must reach 0.70 for the chaining-suffices reading, a family is
 declared not evaluable when the full-flexibility dividend falls below 2% of
 the dedicated baseline, and Gate P asks that at least 8 of 10 policy seeds
 individually beat the best ranked rule. This module re-reads both verdicts
-at every neighbouring setting of those three numbers and reports which
+at every neighboring setting of those three numbers and reports which
 readings change.
 
 Everything here is post hoc arithmetic on released results. No simulation is
@@ -282,14 +282,14 @@ def _tex(res):
                  "results/e8_m07 and results/gates -- do not edit.")
     lines.append("\\begin{table}[!htb]")
     lines.append(
-        "\\caption{Both pre-specified verdicts re-read at neighbouring "
+        "\\caption{Both pre-specified verdicts re-read at neighboring "
         "settings of the three numerical thresholds, from the released "
         "results. Panel~A varies the capture-ratio threshold at $m = 0.6$ "
         "and $\\eta = 1.0$, the family that carries the chaining verdict. "
         "It is read against the point estimate and against the lower end of "
         "the 95\\% instance-cluster interval, on the rules-and-policy "
-        "envelope and under fixed EDD. Panel~B varies the denominator "
-        "guard. Each column head carries that family's full-flexibility "
+        "envelope and under fixed EDD. Panel~B varies the evaluability "
+        "threshold. Each column head carries that family's full-flexibility "
         "dividend as a share of its dedicated baseline. The $m = 0.7$ "
         "family is post hoc, and the last column is the penalized family "
         "the chaining reading is quoted in. Panel~C varies the number of "
@@ -320,10 +320,10 @@ def _tex(res):
 
     # Panel B
     lines.append("\\midrule")
-    lines.append("\\multicolumn{5}{@{}l}{B. Denominator guard; the first "
+    lines.append("\\multicolumn{5}{@{}l}{B. Evaluability threshold; the first "
                  "three columns are at $\\eta = 1.0$} \\\\")
     lines.append("\\midrule")
-    lines.append("Guard & " + " & ".join(
+    lines.append("Threshold & " + " & ".join(
         "%s (%.1f\\%%)" % (name, pct) for name, pct in guard_cols) + " \\\\")
     for g in GUARD_LEVELS:
         label = ("%.0f\\%% (released)" % (100 * g) if g == RELEASED_GUARD

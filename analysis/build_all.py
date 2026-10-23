@@ -403,6 +403,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--figures", action="store_true")
     args = ap.parse_args()
+    # A fresh checkout has no paper/ tree; the generated tables go there.
+    (PAPER / "sections").mkdir(parents=True, exist_ok=True)
 
     numbers: dict = {}
     gates_out: dict = {}
@@ -413,8 +415,8 @@ def main():
     numbers["n-instances-generator"] = "1,800"
     numbers["n-verdict-campuses"] = "4"
     # Public release coordinates (github.com/NTUZZH/FM-CrossTraining).
-    numbers["repo-tag"] = "v1.0"
-    numbers["repo-commit"] = "6f1d0553"
+    numbers["repo-tag"] = "v1.2"
+    numbers["repo-commit"] = "51b70739"
 
     anchor_p = RES / "anchor_l0" / "report.json"
     if anchor_p.exists():
@@ -1608,7 +1610,7 @@ def main():
         numbers["rho-edd-ci"] = _ci(er["point"], er["ci"][0],
                                     er["ci"][1], 3)
 
-    # ---- Round-2 additions: sparse topology panel --------------------------
+    # ---- Sparse topology panel ---------------------------------------------
     # Produced by notes/supplementary/sparse_topology_stats.py from
     # results/e7_topology (pairs, star, feas, rand1) + tier1/tier2.
     sp = _read_json(ROOT / "notes" / "supplementary"
@@ -1633,16 +1635,21 @@ def main():
             100 * cov["feas"]["wcov_mean"])
         pv = sp["pairs_vs_chain_edd"]
         d10, d08 = pv["eta1.0"], pv["eta0.8"]
+        def _sg(x, plus=False):
+            # Typeset minus sign ($-$), never a hyphen.
+            return ("$-$%.2f" % -x if x < 0
+                    else ("+%.2f" if plus else "%.2f") % x)
         numbers["topo-pairs-diff10"] = (
-            "%+.2f (95\\%% CI %.2f to %+.2f, $p = %.2f$)" % (
-                d10["mean_diff_pairs_minus_chain"], d10["ci"][0],
-                d10["ci"][1], d10["wilcoxon_p"]))
+            "%s (95\\%% CI %s to %s, $p = %.2f$)" % (
+                _sg(d10["mean_diff_pairs_minus_chain"], True),
+                _sg(d10["ci"][0]), _sg(d10["ci"][1], True),
+                d10["wilcoxon_p"]))
         numbers["topo-pairs-diff08"] = (
             "%+.2f (95\\%% CI %.2f--%.2f, $p < 0.001$)" % (
                 d08["mean_diff_pairs_minus_chain"], d08["ci"][0],
                 d08["ci"][1]))
 
-    # ---- Round-2 additions: everything else --------------------------------
+    # ---- Remaining analyses ------------------------------------------------
     # Produced by notes/supplementary/robustness_stats.py.
     r2 = _read_json(ROOT / "notes" / "supplementary"
                     / "robustness_stats_out.json")
@@ -1916,7 +1923,7 @@ def main():
             numbers["benefit-per-skill-chain"] = "%.3f" % bc
             numbers["benefit-per-skill-full"] = "%.3f" % bf
             if bf:
-                numbers["benefit-per-skill-ratio"] = "%.1fx" % (bc / bf)
+                numbers["benefit-per-skill-ratio"] = "%.1f$\\times$" % (bc / bf)
 
     # Campus-2 fixed ATC-eta transfer ratios (eta=0.8).
     e4fx = _read("e4")
@@ -1996,17 +2003,32 @@ def main():
     with open(RES / "gates" / "gates.json", "w") as f:
         json.dump(gates_out, f, indent=2, default=float)
 
-    # Revision-round analyses: each module writes its own generated table
+    # Sensitivity and regime analyses: each module writes its own generated table
     # (paper/sections/gen_<name>.tex) and adds its numbers keys.
     import importlib
     for _mod in ("gen_thr", "gen_cpscale", "gen_etatech", "gen_ecal",
-                 "gen_esub"):
+                 "gen_esub", "gen_ecrew", "gen_r2"):
         try:
             _m = importlib.import_module("analysis." + _mod)
         except ImportError:
             continue
         _m.generate(numbers, ROOT)
         print("%s: generated" % _mod)
+
+    # Typeset minus signs: text-mode keys and table cells carry "$-$",
+    # never a hyphen, before a negative number.
+    import re as _re
+    _neg = _re.compile(r"(?<![-\w.$])-(?=\d)")
+    for _k in ("cluster-wspt-rb", "ecal-headcount-change-q90"):
+        if isinstance(numbers.get(_k), str):
+            numbers[_k] = _neg.sub("$-$", numbers[_k])
+    for _name in ("gen_topology.tex", "gen_etatech.tex"):
+        _p = PAPER / "sections" / _name
+        if _p.exists():
+            _t = _p.read_text()
+            _t = "\n".join(_neg.sub("$-$", ln) if "&" in ln else ln
+                            for ln in _t.split("\n"))
+            _p.write_text(_t)
 
     numbers = {k: v for k, v in numbers.items() if v is not None}
     # Merge branch-dependent prose keys if finalize_branch has run.

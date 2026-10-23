@@ -244,8 +244,8 @@ def build_table(fam, roster, n_inst, labels):
              "roster hours, both as ranges over the four verdict campuses. "
              "$\\Delta$(FULL) is the full-flexibility dividend on the rules "
              "envelope at $\\eta = 1.0$, with its share of L0 in "
-             "parentheses. A dash in a $\\rho$ column marks a family the 2\\% "
-             "denominator guard declares not evaluable; where a ratio is "
+             "parentheses. A dash in a $\\rho$ column marks a family below the "
+             "2\\% evaluability threshold, so the ratio is not evaluable; where a ratio is "
              "shown, the parenthesis is a 95\\% instance-cluster bootstrap "
              "interval. $n$ = " + str(n_inst) + " instances per cell.}",
              "\\label{tab:ecal}", "\\centering", "\\footnotesize",

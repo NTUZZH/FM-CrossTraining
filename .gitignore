@@ -3,3 +3,6 @@ data/y1_frozen_v10/data/
 data/y1_frozen_v10/results/
 __pycache__/
 *.pyc
+
+# Tables and number keys written by analysis/build_all.py and the gen_*.py modules.
+paper/

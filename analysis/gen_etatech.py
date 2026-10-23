@@ -173,8 +173,8 @@ def _tex(res):
         "the dedicated baseline of the same crew multiplier, on the "
         "seven-rule-and-Random envelope and under fixed EDD; $\\bar{\\eta}$ "
         "is the realized mean of the draw. A capture ratio is printed only "
-        "where the full-flexibility dividend clears the 2\\%% denominator "
-        "guard, and a dash marks the cells where it does not. The first row "
+        "where the full-flexibility dividend clears the 2\\%% evaluability "
+        "threshold, and a dash marks the cells where it does not. The first row "
         "of each panel is the scalar penalty of the main grid. "
         "$n$ = %d instances per cell.}" % res["n_instances"])
     lines.append("\\label{tab:etatech}")

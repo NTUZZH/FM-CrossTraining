@@ -15,6 +15,48 @@ an upgraded rule and solver suite, a pair-scoring learned dispatcher, the
 dated pre-specified protocol log, and the scored result files behind every
 figure and table in the paper.
 
+## Release v1.2
+
+Version 1.2 adds a crew-size analysis for long work orders, the length floor
+of weighted tardiness, and re-analyses of released results. The v1.1 runners
+and result files are unchanged, and `analysis/build_all.py` rebuilds every
+released number from the shipped result files.
+
+**Hypothetical crew sizes** (Supplemental Table S20 and Text S8). The
+work-order records hold no technician count per order, so the main model
+reads the labor hours of an order as one technician's uninterrupted work.
+`env/crew_engine.py` replaces this reading for orders longer than 8 business
+hours. Such an order needs c = min(c_max, ceil(p / 8), k) technicians at
+once, where p is its labor hours and k is the primary headcount of its trade.
+Its elapsed time is p over the crew's combined rate, rounded up to the
+0.01-hour grid, so the order keeps its labor content. The dispatcher keeps
+the released rules and holds idle technicians for the highest-ranked crew
+order until the crew is complete. `experiments/run_ecrew.py` re-scores L0,
+CHAIN(1.0) and FULL with the seven ranked rules and Random for c_max = 1 to 4
+on the 763 verdict instances. `env/validator_crew.py` scores every schedule
+and imports neither engine. At c_max = 1 the crew engine reproduces all
+91,560 rule rows of `results/tier1` bitwise, and the runner stops on any
+mismatch.
+
+**Length floor** (Supplemental Text S8). An order that would end after its
+due date even if it started at release is late in every schedule.
+`analysis/ecrew_floor.py` sums this unavoidable weighted tardiness per
+instance and crew scenario, so the tardiness above it is the part that
+waiting for a technician causes.
+
+**Re-analyses of released results** (Table 2 of the paper and Supplemental
+Tables S21 and S22). `analysis/gen_r2.py` reads only released result and
+instance files. It builds the principal-regime table, repeats the Gate C
+bootstrap both with and without re-selecting the best observed method in each
+resample, counts unique winners and ties in the decision map, and compares
+the structures in Frame U at matched aggregate offered load, with the
+trade-level loads and the paired chain-minus-full difference.
+
+Results go to `results/ecrew/`: `results.csv` with every scored row, the same
+data as `results.parquet`, the realized crew sizes (`crew_sizes.csv`), the
+length floor per instance (`floor.csv`), and the summary and analysis JSON.
+The resumable shard cache is not shipped.
+
 ## Release v1.1
 
 Version 1.1 adds the frozen benchmark inputs and five sensitivity analyses.
@@ -81,7 +123,9 @@ files.
   released crew calibration and a recorded seed.
 - `env/` -- pair-selection engine (`engine.py`), independent validator
   (`validator2.py`), admissible reward lower bound for overlapping skill
-  pools (`lb2.py`), grid conventions (`conventions.py`).
+  pools (`lb2.py`), grid conventions (`conventions.py`), and the crew-order
+  engine and its independent validator (`crew_engine.py`,
+  `validator_crew.py`).
 - `methods/` -- priority rules with the technician tie-break and the two
   flexibility-aware rules LFJ-ATC and ATC-&eta; (`rules.py`), CP-SAT exact
   and rolling references (`cpsat2.py`, `rolling2.py`), genetic algorithm
@@ -91,11 +135,13 @@ files.
   single-skill release), `run_static.py`, `run_dynamic.py`, `run_e5.py`
   (sensitivity), `launch_training.sh`, `post_training.sh`, and the v1.1
   runners `recalibrate.py`, `run_ecal.py`, `run_esub.py`,
-  `run_ecal_esub.sh`, `etahet_tech.py`, `run_e13_etatech.py`.
+  `run_ecal_esub.sh`, `etahet_tech.py`, `run_e13_etatech.py`, and the v1.2
+  crew-size runner `run_ecrew.py`.
 - `analysis/` -- `gates.py` (the pre-specified Gate P / Gate C tests),
   `build_all.py` (every number in the paper), `figures.py` (every exhibit),
   and the per-analysis table generators `gen_ecal.py`, `gen_esub.py`,
-  `gen_etatech.py`, `gen_thr.py`, `gen_cpscale.py`.
+  `gen_etatech.py`, `gen_thr.py`, `gen_cpscale.py`, `gen_ecrew.py`,
+  `gen_r2.py`, and `ecrew_floor.py`.
 - `protocol/Y2_protocol.md` -- the dated protocol log: gates, thresholds,
   seeds, and the reporting plan, committed before any verdict experiment ran.
 - `results/` -- aggregated per-method scored result files (`results.csv` per
@@ -103,7 +149,7 @@ files.
 - `data/y1_frozen_v10/` -- the frozen input corpus archive and its
   provenance note.
 - `supplemental/` -- the Supplemental Materials PDF (Texts S1--S8,
-  Tables S1--S19, Figs. S1--S6).
+  Tables S1--S22, Figs. S1--S6).
 - `tests/` -- unit and parity tests (overlay accounting, engine parity,
   validator, reward-bound admissibility).
 
@@ -164,11 +210,17 @@ python experiments/run_e13_etatech.py --full --workers 6
 python analysis/gen_etatech.py
 #    gate thresholds and the size-resolved static reference, from released files
 python analysis/gen_thr.py && python analysis/gen_cpscale.py
+
+# 9. v1.2 crew-size analysis and length floor (CPU)
+python experiments/run_ecrew.py --phase regress --workers 12
+python experiments/run_ecrew.py --phase sweep --workers 12
+python analysis/ecrew_floor.py
+python analysis/build_all.py
 ```
 
 `analysis/build_all.py` and the `gen_*.py` modules write their tables and
-number keys under `paper/`, which this release does not carry; create
-`paper/sections/` before running them.
+number keys under `paper/`, which this release does not carry, and create
+`paper/sections/` when it is missing.
 
 ## Data
 

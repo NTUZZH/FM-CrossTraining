@@ -1,0 +1,151 @@
+{
+  "regress": {
+    "finished": "2026-10-23 23:12:33",
+    "elapsed_s": 39.16276025772095,
+    "rows": 91560,
+    "failing_validation": 0,
+    "compared": 91560,
+    "compared_m06_m08": 61040,
+    "compared_m10": 30520,
+    "twt_mismatch": 0,
+    "missing": 0,
+    "other_metric_mismatch": 0,
+    "expected": 91560,
+    "pass": true
+  },
+  "sweep": {
+    "finished": "2026-10-23 23:15:01",
+    "elapsed_s": 129.91040062904358
+  },
+  "n_instances": 763,
+  "rows": 366240,
+  "rows_per_cmax": {
+    "1": 91560,
+    "2": 91560,
+    "3": 91560,
+    "4": 91560
+  },
+  "failing_validation": 0,
+  "crew_rows": 9156,
+  "y1_root": "y1_frozen_v10",
+  "corpus_fingerprint": "0aea54c2",
+  "cells": [
+    [
+      "dedicated",
+      null,
+      1.0,
+      1.0
+    ],
+    [
+      "dedicated",
+      null,
+      1.0,
+      0.8
+    ],
+    [
+      "dedicated",
+      null,
+      1.0,
+      0.6
+    ],
+    [
+      "chain",
+      1.0,
+      1.0,
+      1.0
+    ],
+    [
+      "chain",
+      1.0,
+      0.8,
+      1.0
+    ],
+    [
+      "chain",
+      1.0,
+      1.0,
+      0.8
+    ],
+    [
+      "chain",
+      1.0,
+      0.8,
+      0.8
+    ],
+    [
+      "chain",
+      1.0,
+      1.0,
+      0.6
+    ],
+    [
+      "chain",
+      1.0,
+      0.8,
+      0.6
+    ],
+    [
+      "full",
+      null,
+      1.0,
+      1.0
+    ],
+    [
+      "full",
+      null,
+      0.8,
+      1.0
+    ],
+    [
+      "full",
+      null,
+      1.0,
+      0.8
+    ],
+    [
+      "full",
+      null,
+      0.8,
+      0.8
+    ],
+    [
+      "full",
+      null,
+      1.0,
+      0.6
+    ],
+    [
+      "full",
+      null,
+      0.8,
+      0.6
+    ]
+  ],
+  "c_max": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "rule_set": [
+    "edd",
+    "wspt",
+    "atc",
+    "pfifo",
+    "mor",
+    "lfj_atc",
+    "atc_eta",
+    "random"
+  ],
+  "rule_seed": 301,
+  "long_bh": 8.0,
+  "regression_recheck": {
+    "compared": 91560,
+    "compared_m06_m08": 61040,
+    "compared_m10": 30520,
+    "twt_mismatch": 0,
+    "missing": 0,
+    "other_metric_mismatch": 0,
+    "expected": 91560
+  }
+}
