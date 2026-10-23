@@ -15,6 +15,16 @@ an upgraded rule and solver suite, a pair-scoring learned dispatcher, the
 dated pre-specified protocol log, and the scored result files behind every
 figure and table in the paper.
 
+## Release v1.2.1
+
+Version 1.2.1 adds one re-analysis of released results. `analysis/gen_r2.py`
+also splits the dedicated-roster weighted tardiness of every Frame U instance
+into the length floor and the waiting-induced remainder under fixed EDD, and
+it reports how much of that remainder the chain and full flexibility remove
+(Supplemental Text S8). The split reads only released instance and result
+files. `analysis/build_all.py` drops the prose fields of the numbers
+dictionary that no manuscript source cites. No released result row changed.
+
 ## Release v1.2
 
 Version 1.2 adds a crew-size analysis for long work orders, the length floor

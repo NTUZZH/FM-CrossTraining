@@ -23,7 +23,8 @@ Items:
           estimators.
   A-MAP   decision-map recount (unique winners versus ties).
   A-FU    Frame U: what is held constant, trade-level offered load, paired
-          CHAIN - FULL difference, dedicated-anchored dividends and ratio.
+          CHAIN - FULL difference, dedicated-anchored dividends and ratio,
+          and the length-floor split of L0 tardiness under fixed EDD.
 
 Estimators
   Gate C envelope  lowest pooled mean TWT over the seven ranked rules,
@@ -487,6 +488,41 @@ def frameu_trade_load(root):
     return pd.DataFrame(rows)
 
 
+def frameu_floor(root, e3):
+    """Length-floor split of Frame U tardiness under fixed EDD at eta = 1.
+
+    The floor of an instance is sum_j w_j * max(0, r_j + p_j - d_j), the TWT
+    no one-technician schedule can avoid (analysis/ecrew_floor.py applies the
+    same definition to the replay instances). L0 TWT minus the floor is the
+    tardiness caused by waiting for a technician. Pooled means per U level
+    and over U >= 1.0."""
+    floor = {}
+    for p in sorted((root / "data" / "e3").glob("c*_e3_w80_u*.json")):
+        inst = json.loads(p.read_text())
+        floor[inst["meta"]["id"]] = sum(
+            float(w["weight"]) * max(0.0, float(w["release_bh"])
+                                     + float(w["p_bh"]) - float(w["due_bh"]))
+            for w in inst["work_orders"])
+    edd = e3[e3.method == "edd"]
+    out = {}
+    for name, us in [(u, (u,)) for u in U_LEVELS] + [("ge1", (1.0, 1.1, 1.3))]:
+        sub = edd[edd.u_target.isin(us)]
+        # L0 rows are eta-invariant and stored at eta = 1.0.
+        l0 = sub[sub.structure == "dedicated"].set_index("instance_id").twt
+        ch = sub[(sub.structure == "chain") & (sub.eta == 1.0)].set_index(
+            "instance_id").twt
+        fu = sub[(sub.structure == "full") & (sub.eta == 1.0)].set_index(
+            "instance_id").twt
+        ids = sorted(set(l0.index) & set(ch.index) & set(fu.index))
+        L, C, F = (float(x[ids].mean()) for x in (l0, ch, fu))
+        fl = float(np.mean([floor[i] for i in ids]))
+        out[name] = {"n": len(ids), "l0": L, "floor": fl,
+                     "floor_share": fl / L,
+                     "full_removes_wait": (L - F) / (L - fl),
+                     "chain_removes_wait": (L - C) / (L - fl)}
+    return out
+
+
 def frameu(e3):
     """Paired CHAIN - FULL difference and dedicated-anchored dividends."""
     # cell_matrix reads the eta-invariant L0 rows (stored at eta = 1.0) for
@@ -560,7 +596,9 @@ def regimes_table(reg):
         "dividends, and capture ratio for each principal regime, on the "
         "pre-specified estimator (a) and with EDD dispatching every cell (b). "
         "The gates apply at $m \\in \\{0.6, 0.8\\}$. The level $m = 0.7$ is a "
-        "robustness check, and $m = 1.0$ is the calibrated staffing. Intervals are 95\\% "
+        "robustness check, and $m = 1.0$ is the calibrated staffing. Every "
+        "row pools the same 763 replay instances of the four verdict "
+        "campuses. Intervals are 95\\% "
         "instance-cluster bootstrap intervals, a dash marks a regime below "
         "the 2\\% evaluability threshold, and no value is set in bold.}",
         "\\label{tab:regimes}", "\\centering", "\\footnotesize",
@@ -703,6 +741,7 @@ def compute(root):
     res["map_summary"] = map_summary(res["map"])
     res["fu"] = frameu(e3)
     res["fu_load"] = frameu_trade_load(root)
+    res["fu_floor"] = frameu_floor(root, e3)
     return res
 
 
@@ -805,6 +844,12 @@ def generate(numbers: dict, root: Path):
                                                   .mean())
         numbers[t + "-trades-gt1"] = "%.0f\\%%" % (100 * g.share_trades_gt1
                                                    .mean())
+    for name, f in res["fu_floor"].items():
+        t = "r2-fu-floor-" + ("uge100" if name == "ge1"
+                              else "u%03d" % round(100 * name))
+        numbers[t + "-share"] = _pct(f["floor_share"], 1)
+        numbers[t + "-full-removes-wait"] = _pct(f["full_removes_wait"], 1)
+        numbers[t + "-chain-removes-wait"] = _pct(f["chain_removes_wait"], 1)
     return res
 
 

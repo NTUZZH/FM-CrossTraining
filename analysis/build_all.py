@@ -415,8 +415,8 @@ def main():
     numbers["n-instances-generator"] = "1,800"
     numbers["n-verdict-campuses"] = "4"
     # Public release coordinates (github.com/NTUZZH/FM-CrossTraining).
-    numbers["repo-tag"] = "v1.2"
-    numbers["repo-commit"] = "51b70739"
+    numbers["repo-tag"] = "v1.2.1"
+    numbers["repo-commit"] = "4d10df90"
 
     anchor_p = RES / "anchor_l0" / "report.json"
     if anchor_p.exists():
@@ -2038,6 +2038,15 @@ def main():
         for k, v in bn.items():
             if v:
                 numbers[k] = v
+    # Drop prose fields (sentences and paragraphs) that no manuscript source
+    # cites, so withdrawn wording cannot re-enter a regenerated document.
+    cited = set()
+    for _tex in list(PAPER.glob("*.tex")) + list(PAPER.glob("sections/*.tex")):
+        if _tex.name != "numbers.tex":
+            cited |= set(re.findall(r"\\dat\{([^}]+)\}", _tex.read_text()))
+    numbers = {k: v for k, v in numbers.items()
+               if k in cited or not (isinstance(v, str) and len(v) > 120
+                                     and v.count(" ") > 15)}
     with open(PAPER / "numbers.json", "w") as f:
         json.dump(numbers, f, indent=1, sort_keys=True)
 
